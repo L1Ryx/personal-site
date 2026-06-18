@@ -1,0 +1,35 @@
+---
+interface Props {
+	title: string;
+	meta?: string;
+	tags?: string[];
+	image?: string;
+	imageAlt?: string;
+}
+
+const { title, meta, tags = [], image, imageAlt = '' } = Astro.props;
+---
+
+<article class:list={['card', image && 'card--with-media']}>
+	{
+		image && (
+			<div class="card__media">
+				<img src={image} alt={imageAlt} loading="eager" />
+			</div>
+		)
+	}
+	<div class="card__body">
+		{meta && <div class="card__meta">{meta}</div>}
+		<h3>{title}</h3>
+		<div>
+			<slot />
+		</div>
+		{
+			tags.length > 0 && (
+				<div class="card__tags" aria-label={`${title} tags`}>
+					{tags.map((tag) => <span class="tag">{tag}</span>)}
+				</div>
+			)
+		}
+	</div>
+</article>

@@ -1,0 +1,20 @@
+---
+const navItems = [
+	{ href: '/', label: 'Home' },
+	{ href: '/audio-programming', label: 'Audio Programming' },
+	{ href: '/software-engineering', label: 'Software Engineering' },
+	{ href: '/projects', label: 'Projects' },
+];
+---
+
+<header class="site-header">
+	<div class="container site-header__inner">
+		<a class="brand" href="/" aria-label="Shawn Guo home">
+			<span class="brand__mark" aria-hidden="true">SG</span>
+			<span>Shawn Guo</span>
+		</a>
+		<nav class="nav" aria-label="Primary navigation">
+			{navItems.map((item) => <a href={item.href}>{item.label}</a>)}
+		</nav>
+	</div>
+</header>

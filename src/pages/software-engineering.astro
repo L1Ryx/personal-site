@@ -1,6 +1,50 @@
 ---
 import ButtonLink from '../components/ButtonLink.astro';
+import Card from '../components/Card.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import { experiences } from '../data/experience';
+import { featuredProjects } from '../data/projects';
 import Layout from '../layouts/Layout.astro';
+
+const engineeringExperience = experiences.filter((experience) =>
+	[
+		'Activision / Raven Software',
+		'Quest2Learn',
+		'Snow Day Games',
+		'Serious Point Games',
+	].includes(experience.company),
+);
+
+const engineeringFocusAreas = [
+	{
+		title: 'Production C/C++',
+		meta: 'Runtime systems and tools',
+		description:
+			'Large codebases, real-time constraints, profiling, debugging, memory behavior, APIs, and production workflows.',
+		tags: ['C/C++', 'Profiling', 'Runtime'],
+	},
+	{
+		title: 'Unity / C# Systems',
+		meta: 'Gameplay architecture',
+		description:
+			'Puzzle-state management, gameplay feedback, event pipelines, ScriptableObject-authored content, and maintainable runtime structure.',
+		tags: ['Unity', 'C#', 'Architecture'],
+	},
+	{
+		title: 'Interactive Web Software',
+		meta: '3D and data-driven tools',
+		description:
+			'React, TypeScript, Three.js, React Three Fiber, schema-driven modules, API integrations, and reusable interactive systems.',
+		tags: ['React', 'TypeScript', 'R3F'],
+	},
+	{
+		title: 'Developer-Facing Workflows',
+		meta: 'Iteration and production support',
+		description:
+			'Tools, asset pipelines, debug visibility, migration systems, content workflows, and systems that support designers and collaborators.',
+		tags: ['Tools', 'Pipelines', 'Debugging'],
+	},
+];
 ---
 
 <Layout
@@ -12,13 +56,116 @@ import Layout from '../layouts/Layout.astro';
 			<p class="eyebrow">Software Engineering</p>
 			<h1>Games, tools, real-time systems.</h1>
 			<p class="lede">
-				This page will frame the same background for broader SWE, tools, gameplay, and interactive
-				software roles. The next pass will turn the professional experience into recruiter-ready
-				engineering cards.
+				I build interactive software across production game code, Unity gameplay systems,
+				web-based 3D tools, audio-adjacent runtime systems, and developer-facing workflows.
 			</p>
 			<div class="cluster">
-				<ButtonLink href="/audio-programming">Audio Programming</ButtonLink>
-				<ButtonLink href="/projects" variant="secondary">Projects</ButtonLink>
+				<ButtonLink href="/projects">View Projects</ButtonLink>
+				<ButtonLink href="/audio-programming" variant="secondary">Audio Programming</ButtonLink>
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container">
+			<SectionHeader
+				eyebrow="Engineering experience"
+				title="Production systems, tools, and interactive software."
+				lede="This page frames the same background for SWE, tools, gameplay, and interactive software roles: C/C++ production work, Unity/C# architecture, React/Three.js systems, and workflow-oriented engineering."
+			/>
+			<div class="grid wide">
+				{engineeringExperience.map((experience) => (
+					<Card
+						title={experience.company}
+						meta={`${experience.role} / ${experience.timeframe}`}
+						tags={experience.tags}
+						image={experience.image}
+						imageAlt={experience.imageAlt}
+					>
+						<p>{experience.description}</p>
+					</Card>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="section dark">
+		<div class="container split">
+			<div>
+				<SectionHeader
+					eyebrow="Engineering shape"
+					title="Built around real-time interaction."
+					lede="The common thread is software that must react clearly, perform reliably, and remain understandable to other people working inside the system."
+				/>
+				<div class="stat-grid">
+					<div class="stat">
+						<strong>C/C++</strong>
+						<span>runtime and systems work</span>
+					</div>
+					<div class="stat">
+						<strong>Unity</strong>
+						<span>gameplay architecture</span>
+					</div>
+					<div class="stat">
+						<strong>R3F</strong>
+						<span>interactive web tools</span>
+					</div>
+				</div>
+			</div>
+			<div class="timeline">
+				{engineeringFocusAreas.map((area) => (
+					<Card title={area.title} meta={area.meta} tags={area.tags}>
+						<p>{area.description}</p>
+					</Card>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container">
+			<SectionHeader
+				eyebrow="Project evidence"
+				title="Systems work you can point to."
+				lede="The project cards emphasize architecture, implementation, and interaction design rather than only final aesthetics."
+			/>
+			<div class="grid wide">
+				{featuredProjects.map((project) => (
+					<Card
+						title={project.title}
+						meta={`${project.role} / ${project.meta}`}
+						tags={project.tags}
+						image={project.image}
+						imageAlt={project.imageAlt}
+						links={project.links}
+					>
+						<p>{project.description}</p>
+					</Card>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="section tight">
+		<div class="container split">
+			<div class="callout">
+				<p class="eyebrow">Recruiter read</p>
+				<h2>General SWE without flattening the audio niche.</h2>
+				<p>
+					The goal is to show a flexible engineer with production experience and public systems
+					work, while keeping the audio/gameplay specialization as a strength instead of a constraint.
+				</p>
+			</div>
+			<div class="card">
+				<div class="card__body">
+					<h3>Strongest signals</h3>
+					<ul class="feature-list">
+						<li>C/C++ runtime systems and production tooling in a proprietary AAA engine.</li>
+						<li>Unity/C# gameplay architecture for puzzle, audio, interaction, and feedback systems.</li>
+						<li>React/TypeScript/Three.js work for scalable interactive learning software.</li>
+						<li>Cross-functional engineering across designers, audio teams, educators, and game teams.</li>
+					</ul>
+				</div>
 			</div>
 		</div>
 	</section>

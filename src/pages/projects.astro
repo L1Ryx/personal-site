@@ -1,27 +1,88 @@
 ---
+import ButtonLink from '../components/ButtonLink.astro';
 import Card from '../components/Card.astro';
 import SectionHeader from '../components/SectionHeader.astro';
-import { featuredProjects } from '../data/projects';
+import { additionalProjects, featuredProjects } from '../data/projects';
 import Layout from '../layouts/Layout.astro';
+
+const groups = [
+	{
+		eyebrow: 'Featured projects',
+		title: 'The strongest current portfolio signals.',
+		lede: 'These are the projects that best show the site identity: audio programming, gameplay systems, technical implementation, and polished interactive work.',
+		projects: featuredProjects,
+	},
+	{
+		eyebrow: 'Additional work',
+		title: 'Collaborative, leadership, and experimental projects.',
+		lede: 'These cards round out the gallery and give us places to add final media, links, and writeups as the portfolio matures.',
+		projects: additionalProjects,
+	},
+];
 ---
 
 <Layout
 	title="Projects - Shawn Guo"
 	description="Selected game, audio programming, and interactive software projects by Shawn Guo."
 >
-	<section class="section">
+	<section class="hero hero--compact">
 		<div class="container">
-			<SectionHeader
-				eyebrow="Projects"
-				title="A focused gallery is coming next."
-				lede="For the foundation pass, this route is wired up with the first reusable project cards. Later passes can add media, links, status labels, and more projects."
-			/>
-			<div class="grid">
-				{featuredProjects.map((project) => (
-					<Card title={project.title} meta={project.meta} tags={project.tags}>
-						<p>{project.description}</p>
-					</Card>
-				))}
+			<p class="eyebrow">Projects</p>
+			<h1>Systems with playable proof.</h1>
+			<p class="lede">
+				A focused gallery of game, audio programming, interactive software, and leadership work.
+				Each card is designed to hold media, role context, technical highlights, and links as the
+				final assets come in.
+			</p>
+			<div class="cluster">
+				<ButtonLink href="/audio-programming">Audio Programming</ButtonLink>
+				<ButtonLink href="/software-engineering" variant="secondary">Software Engineering</ButtonLink>
+			</div>
+		</div>
+	</section>
+
+	{groups.map((group, index) => (
+		<section class:list={['section', index === 1 && 'dark']}>
+			<div class="container project-group">
+				<SectionHeader eyebrow={group.eyebrow} title={group.title} lede={group.lede} />
+				<div class="grid wide">
+					{group.projects.map((project) => (
+						<Card
+							title={project.title}
+							meta={`${project.role} / ${project.meta}`}
+							tags={project.tags}
+							image={project.image}
+							imageAlt={project.imageAlt}
+							links={project.links}
+						>
+							<p>{project.description}</p>
+						</Card>
+					))}
+				</div>
+			</div>
+		</section>
+	))}
+
+	<section class="section tight">
+		<div class="container split">
+			<div class="callout">
+				<p class="eyebrow">Next content pass</p>
+				<h2>Replace placeholders with concrete proof.</h2>
+				<p>
+					The gallery is ready for real screenshots, gameplay clips, source links, build links,
+					trailers, and short demo captions.
+				</p>
+			</div>
+			<div class="card">
+				<div class="card__body">
+					<h3>Best assets to collect</h3>
+					<ul class="feature-list">
+						<li>One strong still image or GIF per featured project.</li>
+						<li>Playable links, trailer links, GitHub links, or NDA-safe notes per card.</li>
+						<li>Short technical captions for Ducks Afar, Vesuvius, and Deja You.</li>
+						<li>Any public Serious Point Games, Quest2Learn, or HGDS links worth including.</li>
+					</ul>
+				</div>
 			</div>
 		</div>
 	</section>

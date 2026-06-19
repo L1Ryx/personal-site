@@ -5,9 +5,10 @@ interface Props {
 	tags?: string[];
 	image?: string;
 	imageAlt?: string;
+	links?: { label: string; href: string }[];
 }
 
-const { title, meta, tags = [], image, imageAlt = '' } = Astro.props;
+const { title, meta, tags = [], image, imageAlt = '', links = [] } = Astro.props;
 ---
 
 <article class:list={['card', image && 'card--with-media']}>
@@ -28,6 +29,15 @@ const { title, meta, tags = [], image, imageAlt = '' } = Astro.props;
 			tags.length > 0 && (
 				<div class="card__tags" aria-label={`${title} tags`}>
 					{tags.map((tag) => <span class="tag">{tag}</span>)}
+				</div>
+			)
+		}
+		{
+			links.length > 0 && (
+				<div class="card__actions" aria-label={`${title} links`}>
+					{links.map((link) => (
+						<a href={link.href}>{link.label}</a>
+					))}
 				</div>
 			)
 		}

@@ -159,6 +159,10 @@ p {
 	gap: 1.15rem;
 }
 
+.grid.wide {
+	grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+}
+
 .cluster {
 	display: flex;
 	flex-wrap: wrap;
@@ -379,6 +383,30 @@ p {
 	padding-top: 1rem;
 }
 
+.card__actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.55rem;
+	margin-top: 1rem;
+}
+
+.card__actions a {
+	border-bottom: 1px solid rgba(185, 28, 28, 0.35);
+	color: var(--crimson);
+	font-size: 0.9rem;
+	font-weight: 800;
+	text-decoration: none;
+	transition:
+		border-color 0.18s ease,
+		color 0.18s ease;
+}
+
+.card__actions a:hover,
+.card__actions a:focus-visible {
+	border-color: var(--gold);
+	color: #7f1616;
+}
+
 .tag {
 	border: 1px solid #e9dfcf;
 	border-radius: 999px;
@@ -401,6 +429,23 @@ p {
 	gap: 0.9rem;
 }
 
+.timeline .card--with-media {
+	display: grid;
+	grid-template-columns: minmax(160px, 30%) minmax(0, 1fr);
+}
+
+.timeline .card--with-media .card__media {
+	border-right: 1px solid #eadfce;
+	border-bottom: 0;
+}
+
+.timeline .card--with-media .card__media img {
+	height: 100%;
+	min-height: 170px;
+	aspect-ratio: auto;
+	object-fit: cover;
+}
+
 .callout {
 	border-left: 4px solid var(--crimson);
 	background: #fffaf2;
@@ -420,6 +465,40 @@ p {
 
 .feature-list li + li {
 	margin-top: 0.35rem;
+}
+
+.stat-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+	gap: 0.8rem;
+	margin-top: 1.5rem;
+}
+
+.stat {
+	border: 1px solid rgba(255, 255, 255, 0.13);
+	background: rgba(255, 255, 255, 0.05);
+	padding: 1rem;
+}
+
+.stat strong {
+	display: block;
+	color: #fff8ed;
+	font-family: var(--font-heading);
+	font-size: 1.65rem;
+	letter-spacing: 0.03em;
+	line-height: 1;
+}
+
+.stat span {
+	display: block;
+	margin-top: 0.45rem;
+	color: rgba(255, 248, 237, 0.68);
+	font-size: 0.9rem;
+	font-weight: 700;
+}
+
+.project-group + .project-group {
+	margin-top: 3rem;
 }
 
 .site-footer {
@@ -505,5 +584,21 @@ p {
 	.hero__art-caption {
 		position: static;
 		border-width: 1px 0 0;
+	}
+
+	.timeline .card--with-media {
+		display: flex;
+		grid-template-columns: none;
+	}
+
+	.timeline .card--with-media .card__media {
+		border-right: 0;
+		border-bottom: 1px solid #eadfce;
+	}
+
+	.timeline .card--with-media .card__media img {
+		height: auto;
+		min-height: 0;
+		aspect-ratio: 16 / 9;
 	}
 }

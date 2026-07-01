@@ -52,7 +52,7 @@ The core mechanic asks the player to stack multiple lifetimes in the same space.
 
 The problem was not that the individual sounds were wrong. The problem was that the game needed audio to communicate which lifetime the player was hearing.
 
-For the before state, I kept all ghosts using the same clean sound profile as the current player. That made the contrast clear: the scene still functioned, but the audio did not express age, distance, or memory.
+Before, I kept all ghosts using the same clean sound profile as the current player. That made the contrast pretty clear to me: the scene still worked, but the audio didn't express age, distance, or memory.
 
 ## Generation-Driven Profiles
 
@@ -160,15 +160,15 @@ Deja You already had middleware integration for its original audio implementatio
 
 With those events disabled, the Spectral Imprints layer plays its own character clips and processes them through the custom DSP chain. The rest of the game audio can keep using its original routing, but the ghost/player sound design showcased here is generated and processed by the native Spectral Imprints path. For showcase recording, I also added a ScriptableObject-driven music-volume preset so the music can be lowered without building a full settings menu.
 
-## Runtime Showcase Panel
+## Runtime Debug Panel
 
-To make the system easier to demonstrate, I built a runtime panel that summarizes the currently active generations. It shows which generation buckets are alive and how much attenuation, muffling, echo, and crushing are being applied.
+To make the system easier to tune, I built a runtime debug panel that summarizes the currently active generations. It shows which generation buckets are alive and how much attenuation, muffling, echo, and crushing are being applied.
 
-![Runtime Spectral Imprints panel showing generation buckets and DSP intensity meters](/assets/deja-you-spectral-imprints/deja-you-spectral-imprints-debug.png)
+![Runtime Spectral Imprints debug panel showing generation buckets and DSP intensity meters](/assets/deja-you-spectral-imprints/deja-you-spectral-imprints-debug.png)
 
-The panel also includes two capture-friendly toggles:
+The panel also includes two practical debugging toggles:
 
 - before/after mode, which forces ghosts into clean generation 0 audio for comparison
 - native DSP status, which reports whether the C++ plugin is active or the C# fallback is running
 
-This made the final demo much easier to record: I could show the same kind of gameplay before and after the DSP layer, then reveal the generation table to explain what the player was hearing.
+This helped me verify that the gameplay generation state matched the audio I was hearing. When a ghost aged, I could confirm that its attenuation, filter amount, delay, and degradation increased in the expected bucket instead of guessing from listening alone.

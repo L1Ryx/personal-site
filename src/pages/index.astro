@@ -1,14 +1,9 @@
 ---
-import { getCollection } from 'astro:content';
-import ButtonLink from '../components/ButtonLink.astro';
 import { profile } from '../data/profile';
 import Layout from '../layouts/Layout.astro';
-
-const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
-const highlightProjects = projects.filter((project) => project.data.featured).slice(0, 3);
 ---
 
-<Layout title="Shawn Guo - Software Engineer" description={profile.tagline}>
+<Layout title="About - Shawn Guo" description={profile.tagline}>
 	<section class="home-readme">
 		<div class="container">
 			<p class="eyebrow">welcome.md</p>
@@ -60,28 +55,43 @@ const highlightProjects = projects.filter((project) => project.data.featured).sl
 	</section>
 
 	<section class="section home-section">
-		<div class="container home-stack">
-			<div class="home-block home-block--first">
-				<div class="home-block__heading">
-					<div>
-						<p class="eyebrow">Project highlights</p>
-						<h2>Three starting points.</h2>
-					</div>
-					<ButtonLink href="/projects">All Projects</ButtonLink>
+		<div class="container home-action-grid">
+			<section class="home-action-panel">
+				<p class="action-title">Projects</p>
+				<p class="action-description">Check out my projects!</p>
+				<a class="button" href="/projects">View Projects</a>
+			</section>
+
+			<section class="home-action-panel">
+				<p class="action-title">Contact</p>
+				<p class="action-description">Contact me for anything.</p>
+				<div class="action-button-stack">
+					<a class="contact-button" href={`mailto:${profile.email}`}>
+						<svg viewBox="0 0 24 24" aria-hidden="true">
+							<path d="M4 6h16v12H4z" />
+							<path d="m4 7 8 6 8-6" />
+						</svg>
+						Email
+					</a>
+					<a class="contact-button" href={profile.github}>
+						<svg viewBox="0 0 24 24" aria-hidden="true">
+							<path d="M7 8.5 3.5 12 7 15.5" />
+							<path d="m17 8.5 3.5 3.5-3.5 3.5" />
+							<path d="m14 5-4 14" />
+						</svg>
+						GitHub
+					</a>
+					<a class="contact-button" href={profile.linkedin}>
+						<svg viewBox="0 0 24 24" aria-hidden="true">
+							<path d="M5 9v10" />
+							<path d="M5 5.5v.1" />
+							<path d="M10 19v-6.2c0-2.2 1.2-3.8 3.4-3.8s3.6 1.4 3.6 4.1V19" />
+							<path d="M10 9v10" />
+						</svg>
+						LinkedIn
+					</a>
 				</div>
-				<div class="mini-project-grid">
-					{highlightProjects.map((project) => (
-						<a class="mini-project-card" href={`/projects/${project.id}`}>
-							<img src={project.data.image} alt={project.data.imageAlt} />
-							<div>
-								<span>{project.data.subtitle}</span>
-								<strong>{project.data.title}</strong>
-								<p>{project.data.summary}</p>
-							</div>
-						</a>
-					))}
-				</div>
-			</div>
+			</section>
 		</div>
 	</section>
 </Layout>

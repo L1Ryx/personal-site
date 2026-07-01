@@ -15,10 +15,10 @@ export async function getStaticPaths() {
 const { project } = Astro.props;
 const { Content } = await render(project);
 
-const links = [
-	...(project.data.github ? [{ label: 'GitHub', href: project.data.github }] : []),
-	...(project.data.liveDemo ? [{ label: 'Live Demo', href: project.data.liveDemo }] : []),
-	...(project.data.external ? [{ label: 'External Link', href: project.data.external }] : []),
+const projectLinks = [
+	...(project.data.github ? [{ label: 'GitHub', href: project.data.github, icon: 'github' }] : []),
+	...(project.data.liveDemo ? [{ label: 'Try the Game', href: project.data.liveDemo, icon: 'play' }] : []),
+	...(project.data.external ? [{ label: 'External Link', href: project.data.external, icon: 'external' }] : []),
 ];
 ---
 
@@ -30,14 +30,11 @@ const links = [
 		<section class="project-detail-hero">
 			<div class="container project-detail-hero__grid">
 				<div>
-					<p class="eyebrow">{project.data.role}</p>
+					<p class="eyebrow">{project.data.brow ?? project.data.role}</p>
 					<h1>{project.data.title}</h1>
 					<p class="lede">{project.data.summary}</p>
 					<div class="cluster">
 						<ButtonLink href="/projects">All Projects</ButtonLink>
-						{links.map((link) => (
-							<ButtonLink href={link.href} variant="secondary">{link.label}</ButtonLink>
-						))}
 					</div>
 				</div>
 				<figure class="project-detail-hero__media">
@@ -72,6 +69,32 @@ const links = [
 								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 								allowfullscreen
 							/>
+						</div>
+					)}
+					{projectLinks.length > 0 && (
+						<div class="project-link-panel" aria-label={`${project.data.title} links`}>
+							{projectLinks.map((link) => (
+								<a class="project-link-button" href={link.href}>
+									{link.icon === 'github' && (
+										<svg viewBox="0 0 24 24" aria-hidden="true">
+											<path class="icon-fill" d="M12 2.5a9.5 9.5 0 0 0-3 18.52c.48.09.65-.2.65-.46v-1.74c-2.67.58-3.23-1.13-3.23-1.13-.44-1.1-1.07-1.4-1.07-1.4-.87-.6.07-.59.07-.59.96.07 1.47.99 1.47.99.86 1.46 2.25 1.04 2.8.8.09-.62.34-1.04.61-1.28-2.13-.24-4.37-1.07-4.37-4.74 0-1.05.38-1.9.99-2.57-.1-.24-.43-1.22.09-2.54 0 0 .8-.26 2.62.98A9.1 9.1 0 0 1 12 7.01c.81 0 1.62.11 2.38.32 1.82-1.24 2.62-.98 2.62-.98.52 1.32.19 2.3.09 2.54.62.67.99 1.52.99 2.57 0 3.68-2.24 4.49-4.38 4.73.35.3.66.89.66 1.8v2.57c0 .26.17.56.66.46A9.5 9.5 0 0 0 12 2.5Z" />
+										</svg>
+									)}
+									{link.icon === 'play' && (
+										<svg viewBox="0 0 24 24" aria-hidden="true">
+											<path class="icon-fill" d="M8 5.5v13l10-6.5-10-6.5Z" />
+										</svg>
+									)}
+									{link.icon === 'external' && (
+										<svg viewBox="0 0 24 24" aria-hidden="true">
+											<path d="M8 8h8v8" />
+											<path d="m7 17 9-9" />
+											<path d="M5 5h14v14H5z" />
+										</svg>
+									)}
+									<span>{link.label}</span>
+								</a>
+							))}
 						</div>
 					)}
 					<div class="markdown-body">

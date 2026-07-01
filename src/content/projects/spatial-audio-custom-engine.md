@@ -2,6 +2,7 @@
 title: Spatial Audio in a Custom C++ Engine
 subtitle: Obstruction, diffraction, and room-aware reverb
 summary: A custom spatial audio system for Negative Space, where sound guides the player through a dark 3D environment.
+brow: negative-space-spatial-audio.md
 role: Audio Programmer
 order: 5
 featured: true
@@ -19,6 +20,8 @@ tags:
   - Custom Engine
 image: /assets/negative-space-audio/negative-space-audio.gif
 imageAlt: Gameplay clip of Negative Space showing paint revealing a dark 3D room
+github: https://github.com/L1Ryx/Negative-Space
+liveDemo: https://l1ryx.itch.io/negative-space
 ---
 
 ## Overview
@@ -26,6 +29,8 @@ imageAlt: Gameplay clip of Negative Space showing paint revealing a dark 3D room
 Negative Space is a short first-person game set almost entirely in darkness. The player listens for hidden beacons, sprays paint to reveal the room around them, and finds each objective by combining spatial audio cues with the silhouettes left behind in the paint.
 
 For this project, I built a reusable spatial audio stack inside a custom C++ engine. The goal was to make sound a primary gameplay system rather than a layer added after the fact.
+
+This page focuses on the audio system; I wrote separately about the engine architecture in [Custom C++ Game Engine for Negative Space](/projects/custom-cpp-game-engine-negative-space/).
 
 ![A dark view of Negative Space before the environment is fully revealed](/assets/negative-space-audio/negative-space-audio-diagnostics.png)
 
@@ -119,4 +124,3 @@ I built ImGui debug panels for inspecting listener state, emitter state, obstruc
 ![A brighter debug view showing Negative Space audio diagnostics and acoustic visualization](/assets/negative-space-audio/negative-space-audio-diagnostics-lit-up.png)
 
 Most gameplay and audio values are exposed through JSON so I can rebalance the experience without recompiling.
-

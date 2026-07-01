@@ -444,7 +444,8 @@ p {
 .card__actions {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 0.55rem;
+	column-gap: 1.15rem;
+	row-gap: 0.7rem;
 	margin-top: 1rem;
 }
 
@@ -877,6 +878,15 @@ p {
 	color: #fff8ed;
 }
 
+.project-detail-hero .eyebrow {
+	text-transform: none;
+}
+
+.project-detail-hero .lede {
+	color: rgba(255, 248, 237, 0.82);
+	font-weight: 650;
+}
+
 .project-detail-hero__grid {
 	display: grid;
 	grid-template-columns: minmax(0, 0.9fr) minmax(300px, 1.1fr);
@@ -920,6 +930,59 @@ p {
 .project-content {
 	display: grid;
 	gap: 2rem;
+}
+
+.project-link-panel {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.75rem;
+	border: 1px solid var(--border);
+	border-radius: 8px;
+	background: var(--surface);
+	box-shadow: var(--shadow);
+	padding: 1rem;
+}
+
+.project-link-button {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.55rem;
+	border: 1px solid #e4d8c5;
+	border-radius: 999px;
+	background: #fffaf2;
+	color: var(--text);
+	font-weight: 850;
+	line-height: 1;
+	padding: 0.8rem 1rem;
+	text-decoration: none;
+	transition:
+		background 0.18s ease,
+		border-color 0.18s ease,
+		color 0.18s ease,
+		transform 0.18s ease;
+}
+
+.project-link-button:hover,
+.project-link-button:focus-visible {
+	border-color: rgba(185, 28, 28, 0.42);
+	background: #fff3df;
+	color: var(--crimson);
+	transform: translateY(-2px);
+}
+
+.project-link-button svg {
+	width: 1.15rem;
+	height: 1.15rem;
+	fill: none;
+	stroke: currentColor;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	stroke-width: 2;
+}
+
+.project-link-button .icon-fill {
+	fill: currentColor;
+	stroke: none;
 }
 
 .demo-frame,

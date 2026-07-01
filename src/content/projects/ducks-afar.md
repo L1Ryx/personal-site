@@ -8,7 +8,7 @@ featured: true
 types:
   - Games
   - Tools Programming
-  - Middleware and Audio Implementation
+  - Audio Implementation
 tags:
   - Unity
   - C#

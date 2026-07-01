@@ -6,7 +6,7 @@ role: Lead Engineer, Audio
 order: 10
 featured: true
 types:
-  - Middleware and Audio Implementation
+  - Audio Implementation
   - Audio Programming
   - Games
 tags:

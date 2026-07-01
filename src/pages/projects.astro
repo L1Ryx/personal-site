@@ -6,7 +6,7 @@ import Layout from '../layouts/Layout.astro';
 const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
 const preferredTypes = [
 	'Audio Programming',
-	'Middleware and Audio Implementation',
+	'Audio Implementation',
 	'Games',
 	'Tools Programming',
 	'Systems Programming',
@@ -21,7 +21,7 @@ const types = [
 const projectLinks = (project) => [
 	{ label: 'Details', href: `/projects/${project.id}` },
 	...(project.data.github ? [{ label: 'GitHub', href: project.data.github }] : []),
-	...(project.data.liveDemo ? [{ label: 'Demo', href: project.data.liveDemo }] : []),
+	...(project.data.liveDemo ? [{ label: 'Itch.io', href: project.data.liveDemo }] : []),
 ];
 ---
 
@@ -54,7 +54,7 @@ const projectLinks = (project) => [
 				{projects.map((project) => (
 					<Card
 						title={project.data.title}
-						meta={`${project.data.role} / ${project.data.subtitle}`}
+						meta={project.data.brow ?? `${project.data.role} / ${project.data.subtitle}`}
 						tags={project.data.tags}
 						image={project.data.image}
 						imageAlt={project.data.imageAlt}

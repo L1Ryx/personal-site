@@ -58,6 +58,25 @@ const projectLinks = [
 							{project.data.tags.map((tag) => <span class="tag">{tag}</span>)}
 						</div>
 					</div>
+					<div>
+						<p class="eyebrow">Other Contributors</p>
+						{
+							project.data.contributors.length > 0 ? (
+								<div class="contributor-list">
+									{project.data.contributors.map((contributor) => (
+										<div class="contributor">
+											<strong>{contributor.name}</strong>
+											<span>{contributor.role}</span>
+										</div>
+									))}
+								</div>
+							) : (
+								<div class="card__tags">
+									<span class="tag tag--muted">None</span>
+								</div>
+							)
+						}
+					</div>
 				</aside>
 
 				<div class="project-content">

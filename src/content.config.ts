@@ -14,6 +14,12 @@ const projects = defineCollection({
 		featured: z.boolean().default(false),
 		types: z.array(z.string()),
 		tags: z.array(z.string()),
+		contributors: z
+			.array(z.object({
+				name: z.string(),
+				role: z.string(),
+			}))
+			.default([]),
 		image: z.string(),
 		imageAlt: z.string(),
 		demoVideo: z.string().optional(),

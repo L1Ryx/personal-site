@@ -16,6 +16,9 @@ tags:
   - Dear ImGui
   - ECS
   - Custom Engine
+contributors:
+  - name: Greg Anderson
+    role: Engine Inspiration
 image: /assets/negative-space-engine/negative-space-engine.gif
 imageAlt: Gameplay clip of Negative Space showing paint revealing a dark 3D engine test space
 github: https://github.com/L1Ryx/Negative-Space

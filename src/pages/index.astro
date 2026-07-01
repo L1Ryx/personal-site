@@ -10,7 +10,7 @@ import Layout from '../layouts/Layout.astro';
 			<h1>Hello there!</h1>
 			<div class="home-about-copy">
 				<p>
-					I'm Shawn Guo, a software engineer specializing in systems, gameplay, and audio
+					I'm Shawn Guo (L1Ryx), a software engineer specializing in systems, gameplay, and audio
 					programming.
 				</p>
 				<p>
@@ -58,41 +58,109 @@ import Layout from '../layouts/Layout.astro';
 
 	<section class="section home-section">
 		<div class="container home-action-grid">
-			<section class="home-action-panel">
-				<p class="action-title">Projects</p>
-				<p class="action-description">Check out my projects!</p>
-				<a class="button" href="/projects">View Projects</a>
+			<section class="home-action-panel home-action-panel--with-image">
+				<div class="home-action-copy">
+					<p class="action-title">My Projects</p>
+					<p class="action-description">Follow my work.</p>
+					<a class="button" href="/projects">Projects</a>
+				</div>
+				<a class="home-action-media" href="/projects" aria-label="View my projects">
+					<img
+						class="home-action-media__crop"
+						src="/assets/welcome/my-projects.gif"
+						alt="Project preview reel"
+					/>
+					<img
+						class="home-action-media__full"
+						src="/assets/welcome/my-projects.gif"
+						alt=""
+						aria-hidden="true"
+					/>
+				</a>
 			</section>
 
-			<section class="home-action-panel">
-				<p class="action-title">Contact</p>
-				<p class="action-description">Contact me for anything.</p>
-				<div class="action-button-stack">
-					<a class="contact-button" href={`mailto:${profile.email}`}>
-						<svg viewBox="0 0 24 24" aria-hidden="true">
-							<path d="M4 6h16v12H4z" />
-							<path d="m4 7 8 6 8-6" />
-						</svg>
-						Email
-					</a>
+			<section class="home-action-panel home-action-panel--with-image">
+				<div class="home-action-copy">
+					<p class="action-title">Contact</p>
+					<p class="action-description">Questions or collabs.</p>
+					<div class="action-button-stack">
+						<a class="contact-button" href={`mailto:${profile.email}`}>
+							<svg viewBox="0 0 24 24" aria-hidden="true">
+								<path d="M4 6h16v12H4z" />
+								<path d="m4 7 8 6 8-6" />
+							</svg>
+							Email
+						</a>
+						<a class="contact-button" href={profile.linkedin}>
+							<svg viewBox="0 0 24 24" aria-hidden="true">
+								<path d="M5 9v10" />
+								<path d="M5 5.5v.1" />
+								<path d="M10 19v-6.2c0-2.2 1.2-3.8 3.4-3.8s3.6 1.4 3.6 4.1V19" />
+								<path d="M10 9v10" />
+							</svg>
+							LinkedIn
+						</a>
+					</div>
+				</div>
+				<a class="home-action-media" href={`mailto:${profile.email}`} aria-label="Email me">
+					<img class="home-action-media__crop" src="/assets/welcome/contact.gif" alt="Contact preview" />
+					<img
+						class="home-action-media__full"
+						src="/assets/welcome/contact.gif"
+						alt=""
+						aria-hidden="true"
+					/>
+				</a>
+			</section>
+
+			<section class="home-action-panel home-action-panel--with-image">
+				<div class="home-action-copy">
+					<p class="action-title">GitHub</p>
+					<p class="action-description">See what I'm making.</p>
 					<a class="contact-button" href={profile.github}>
 						<svg viewBox="0 0 24 24" aria-hidden="true">
-							<path d="M7 8.5 3.5 12 7 15.5" />
-							<path d="m17 8.5 3.5 3.5-3.5 3.5" />
-							<path d="m14 5-4 14" />
+							<path class="icon-fill" d="M12 2.5a9.5 9.5 0 0 0-3 18.52c.48.09.65-.2.65-.46v-1.74c-2.67.58-3.23-1.13-3.23-1.13-.44-1.1-1.07-1.4-1.07-1.4-.87-.6.07-.59.07-.59.96.07 1.47.99 1.47.99.86 1.46 2.25 1.04 2.8.8.09-.62.34-1.04.61-1.28-2.13-.24-4.37-1.07-4.37-4.74 0-1.05.38-1.9.99-2.57-.1-.24-.43-1.22.09-2.54 0 0 .8-.26 2.62.98A9.1 9.1 0 0 1 12 7.01c.81 0 1.62.11 2.38.32 1.82-1.24 2.62-.98 2.62-.98.52 1.32.19 2.3.09 2.54.62.67.99 1.52.99 2.57 0 3.68-2.24 4.49-4.38 4.73.35.3.66.89.66 1.8v2.57c0 .26.17.56.66.46A9.5 9.5 0 0 0 12 2.5Z" />
 						</svg>
 						GitHub
 					</a>
-					<a class="contact-button" href={profile.linkedin}>
+				</div>
+				<a class="home-action-media" href={profile.github} aria-label="Open GitHub">
+					<img class="home-action-media__crop" src="/assets/welcome/github.gif" alt="GitHub preview" />
+					<img
+						class="home-action-media__full"
+						src="/assets/welcome/github.gif"
+						alt=""
+						aria-hidden="true"
+					/>
+				</a>
+			</section>
+
+			<section class="home-action-panel home-action-panel--with-image">
+				<div class="home-action-copy">
+					<p class="action-title">Itch.io</p>
+					<p class="action-description">Play my games!</p>
+					<a class="contact-button" href={profile.itch}>
 						<svg viewBox="0 0 24 24" aria-hidden="true">
-							<path d="M5 9v10" />
-							<path d="M5 5.5v.1" />
-							<path d="M10 19v-6.2c0-2.2 1.2-3.8 3.4-3.8s3.6 1.4 3.6 4.1V19" />
-							<path d="M10 9v10" />
+							<path d="M5.4 9.2h13.2" />
+							<path d="M6.6 5.2h10.8l1.2 4H5.4l1.2-4Z" />
+							<path d="M7 9.2v9.6h10V9.2" />
+							<path d="M9.4 12.2h5.2v3.4H9.4z" />
+							<path d="M9 5.2v4" />
+							<path d="M12 5.2v4" />
+							<path d="M15 5.2v4" />
 						</svg>
-						LinkedIn
+						Itch.io
 					</a>
 				</div>
+				<a class="home-action-media" href={profile.itch} aria-label="Open Itch.io">
+					<img class="home-action-media__crop" src="/assets/welcome/itchio.gif" alt="Itch.io preview" />
+					<img
+						class="home-action-media__full"
+						src="/assets/welcome/itchio.gif"
+						alt=""
+						aria-hidden="true"
+					/>
+				</a>
 			</section>
 		</div>
 	</section>

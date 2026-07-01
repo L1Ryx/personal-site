@@ -9,7 +9,6 @@ featured: true
 types:
   - Audio Programming
   - Audio Implementation
-  - Games
 tags:
   - Unity
   - C#

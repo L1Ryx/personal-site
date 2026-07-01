@@ -3,6 +3,7 @@ export const profile = {
 	email: 'shawnguo.dev@gmail.com',
 	location: 'Baltimore, MD',
 	github: 'https://github.com/l1ryx',
+	itch: 'https://l1ryx.itch.io/',
 	linkedin: 'https://www.linkedin.com/in/shawn-guo-371b66293',
 	tagline: 'Software engineer specializing in systems, gameplay, and audio programming.',
 };

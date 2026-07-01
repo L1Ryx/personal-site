@@ -7,7 +7,7 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
 const preferredTypes = [
 	'Audio Programming',
 	'Audio Implementation',
-	'Games',
+	'Solo Games',
 	'Tools Programming',
 	'Systems Programming',
 ];
@@ -32,7 +32,7 @@ const projectLinks = (project) => [
 	<section class="projects-hero">
 		<div class="container projects-hero__inner">
 			<p class="eyebrow">projects.md</p>
-			<h1>Projects</h1>
+			<h1>My Projects</h1>
 			<div class="filter-bar" aria-label="Project filters">
 				{types.map((type, index) => (
 					<button

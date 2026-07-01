@@ -8,7 +8,7 @@ featured: true
 types:
   - Systems Programming
   - Tools Programming
-  - Games
+  - Solo Games
 tags:
   - C++
   - CMake

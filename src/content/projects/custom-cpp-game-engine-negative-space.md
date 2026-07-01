@@ -3,19 +3,17 @@ title: Custom C++ Game Engine for Negative Space
 subtitle: 3D gameplay systems, data-driven tools, and custom runtime architecture
 summary: A built-from-scratch C++/raylib engine extended into a 3D first-person runtime for Negative Space.
 brow: negative-space-engine.md
-order: 3
+order: 4
 featured: true
 types:
   - Systems Programming
   - Tools Programming
-  - Solo Games
 tags:
   - C++
   - CMake
   - raylib
   - Dear ImGui
   - ECS
-  - Custom Engine
 contributors:
   - name: Greg Anderson
     role: Engine Inspiration

@@ -1,0 +1,58 @@
+---
+import Card from '../components/Card.astro';
+import Layout from '../layouts/Layout.astro';
+
+const games = [
+	{
+		title: 'Love Language',
+		role: 'Gameplay Programmer, Technical Sound Designer, Producer',
+		summary: 'A psychological horror visual novel where your date is not quite who he seems. I led the Hopkins Game Development Society team behind the project.',
+		tags: ['FMOD', 'Unity', 'C#'],
+		image: '/assets/my-games/love-language-splash.gif',
+		imageAlt: 'Love Language splash art',
+		hoverImage: '/assets/my-games/love-language-gameplay.gif',
+		hoverImageAlt: 'Love Language gameplay preview',
+		itch: 'https://hopkins-game-dev-society.itch.io/love-language',
+		github: 'https://github.com/Hopkins-Game-Dev-Society/ScreamJam2025',
+	},
+];
+
+const gameLinks = (game) => [
+	...(game.github ? [{ label: 'GitHub', href: game.github }] : []),
+	...(game.itch ? [{ label: 'Itch.io', href: game.itch }] : []),
+];
+---
+
+<Layout
+	title="Games - Shawn Guo"
+	description="Games by Shawn Guo and collaborators."
+>
+	<section class="projects-hero">
+		<div class="container projects-hero__inner">
+			<p class="eyebrow">games.md</p>
+			<h1>Games</h1>
+		</div>
+	</section>
+
+	<section class="section projects-section">
+		<div class="container">
+			<div class="project-card-grid">
+				{games.map((game) => (
+					<Card
+						title={game.title}
+						meta={game.role}
+						tags={game.tags}
+						image={game.image}
+						imageAlt={game.imageAlt}
+						hoverImage={game.hoverImage}
+						hoverImageAlt={game.hoverImageAlt}
+						href={game.itch ?? game.github}
+						links={gameLinks(game)}
+					>
+						<p>{game.summary}</p>
+					</Card>
+				))}
+			</div>
+		</div>
+	</section>
+</Layout>

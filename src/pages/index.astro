@@ -81,32 +81,15 @@ import Layout from '../layouts/Layout.astro';
 
 			<section class="home-action-panel home-action-panel--with-image">
 				<div class="home-action-copy">
-					<p class="action-title">Contact</p>
-					<p class="action-description">Questions or collabs.</p>
-					<div class="action-button-stack">
-						<a class="contact-button" href={`mailto:${profile.email}`}>
-							<svg viewBox="0 0 24 24" aria-hidden="true">
-								<path d="M4 6h16v12H4z" />
-								<path d="m4 7 8 6 8-6" />
-							</svg>
-							Email
-						</a>
-						<a class="contact-button" href={profile.linkedin}>
-							<svg viewBox="0 0 24 24" aria-hidden="true">
-								<path d="M5 9v10" />
-								<path d="M5 5.5v.1" />
-								<path d="M10 19v-6.2c0-2.2 1.2-3.8 3.4-3.8s3.6 1.4 3.6 4.1V19" />
-								<path d="M10 9v10" />
-							</svg>
-							LinkedIn
-						</a>
-					</div>
+					<p class="action-title">Games</p>
+					<p class="action-description">Check out my games!</p>
+					<a class="button" href="/games">Games</a>
 				</div>
-				<a class="home-action-media" href={`mailto:${profile.email}`} aria-label="Email me">
-					<img class="home-action-media__crop" src="/assets/welcome/contact.gif" alt="Contact preview" />
+				<a class="home-action-media" href="/games" aria-label="View games">
+					<img class="home-action-media__crop" src="/assets/welcome/itchio.gif" alt="Games preview" />
 					<img
 						class="home-action-media__full"
-						src="/assets/welcome/contact.gif"
+						src="/assets/welcome/itchio.gif"
 						alt=""
 						aria-hidden="true"
 					/>
@@ -138,7 +121,7 @@ import Layout from '../layouts/Layout.astro';
 			<section class="home-action-panel home-action-panel--with-image">
 				<div class="home-action-copy">
 					<p class="action-title">Itch.io</p>
-					<p class="action-description">Play my games!</p>
+					<p class="action-description">Play my games on Itch!</p>
 					<a class="contact-button" href={profile.itch}>
 						<svg viewBox="0 0 24 24" aria-hidden="true">
 							<path d="M5.4 9.2h13.2" />
@@ -153,14 +136,39 @@ import Layout from '../layouts/Layout.astro';
 					</a>
 				</div>
 				<a class="home-action-media" href={profile.itch} aria-label="Open Itch.io">
-					<img class="home-action-media__crop" src="/assets/welcome/itchio.gif" alt="Itch.io preview" />
+					<img class="home-action-media__crop" src="/assets/welcome/my-games.gif" alt="Itch.io preview" />
 					<img
 						class="home-action-media__full"
-						src="/assets/welcome/itchio.gif"
+						src="/assets/welcome/my-games.gif"
 						alt=""
 						aria-hidden="true"
 					/>
 				</a>
+			</section>
+
+			<section class="home-action-panel home-action-panel--contact">
+				<div>
+					<p class="action-title">Contact</p>
+					<p class="action-description">Reach out if you have any questions or want to collab!</p>
+				</div>
+				<div class="action-button-stack">
+					<a class="contact-button" href={`mailto:${profile.email}`}>
+						<svg viewBox="0 0 24 24" aria-hidden="true">
+							<path d="M4 6h16v12H4z" />
+							<path d="m4 7 8 6 8-6" />
+						</svg>
+						Email
+					</a>
+					<a class="contact-button" href={profile.linkedin}>
+						<svg viewBox="0 0 24 24" aria-hidden="true">
+							<path d="M5 9v10" />
+							<path d="M5 5.5v.1" />
+							<path d="M10 19v-6.2c0-2.2 1.2-3.8 3.4-3.8s3.6 1.4 3.6 4.1V19" />
+							<path d="M10 9v10" />
+						</svg>
+						LinkedIn
+					</a>
+				</div>
 			</section>
 		</div>
 	</section>

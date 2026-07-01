@@ -15,7 +15,6 @@ tags:
   - C++
   - DSP
   - Native Plugins
-  - ScriptableObjects
 contributors:
   - name: Samuel Huang
     role: Design and Gameplay Programming
@@ -36,6 +35,8 @@ externalLabel: Itch.io
 ---
 
 ## Overview
+
+![Deja You banner art](/assets/deja-you-spectral-imprints/deja-you-banner.png)
 
 Deja You is a 2D time-loop platformer where each rewind creates a replayed version of the player. These past lifetimes keep performing the actions the player recorded earlier, so solving a level often means cooperating with older versions of yourself.
 

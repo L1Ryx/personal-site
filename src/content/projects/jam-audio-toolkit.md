@@ -4,7 +4,7 @@ subtitle: Designer-friendly Unity audio tools, runtime systems, and desktop auth
 summary: A free Unity-native audio toolkit for quickly authoring, previewing, and triggering reusable sound and music events.
 brow: jam-audio-toolkit.md
 role: Audio Tools Programmer
-order: 4
+order: 5
 featured: true
 types:
   - Audio Programming
@@ -15,13 +15,10 @@ tags:
   - Unity
   - C#
   - C++
-  - Audio Authoring
   - Editor Tools
-  - ScriptableObjects
   - Dear ImGui
   - miniaudio
   - CMake
-  - GitHub Releases
 contributors:
   - name: yeetimameme
     role: Icon Art

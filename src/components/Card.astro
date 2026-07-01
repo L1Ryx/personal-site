@@ -5,6 +5,8 @@ interface Props {
 	tags?: string[];
 	image?: string;
 	imageAlt?: string;
+	hoverImage?: string;
+	hoverImageAlt?: string;
 	links?: { label: string; href: string }[];
 	href?: string;
 	filterTypes?: string[];
@@ -16,6 +18,8 @@ const {
 	tags = [],
 	image,
 	imageAlt = '',
+	hoverImage,
+	hoverImageAlt = '',
 	links = [],
 	href,
 	filterTypes = [],
@@ -28,13 +32,33 @@ const {
 >
 	{
 		image && (
-			<div class="card__media">
+			<div class:list={['card__media', hoverImage && 'card__media--swap']}>
 				{href ? (
 					<a href={href} aria-label={`View ${title}`}>
-						<img src={image} alt={imageAlt} loading="eager" />
+						<img class="card__image card__image--splash" src={image} alt={imageAlt} loading="eager" />
+						{hoverImage && (
+							<img
+								class="card__image card__image--hover"
+								src={hoverImage}
+								alt={hoverImageAlt}
+								loading="eager"
+								aria-hidden={hoverImageAlt ? undefined : 'true'}
+							/>
+						)}
 					</a>
 				) : (
-					<img src={image} alt={imageAlt} loading="eager" />
+					<>
+						<img class="card__image card__image--splash" src={image} alt={imageAlt} loading="eager" />
+						{hoverImage && (
+							<img
+								class="card__image card__image--hover"
+								src={hoverImage}
+								alt={hoverImageAlt}
+								loading="eager"
+								aria-hidden={hoverImageAlt ? undefined : 'true'}
+							/>
+						)}
+					</>
 				)}
 			</div>
 		)

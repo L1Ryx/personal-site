@@ -15,8 +15,6 @@ tags:
   - raylib
   - Dear ImGui
   - DSP
-  - Spatial Audio
-  - Custom Engine
 image: /assets/negative-space-audio/negative-space-audio.gif
 imageAlt: Gameplay clip of Negative Space showing paint revealing a dark 3D room
 github: https://github.com/L1Ryx/Negative-Space

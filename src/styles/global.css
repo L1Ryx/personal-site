@@ -407,6 +407,47 @@ p {
 	object-fit: cover;
 }
 
+.card__media--swap,
+.card__media--swap a {
+	position: relative;
+	overflow: hidden;
+}
+
+.card__media--swap {
+	aspect-ratio: 16 / 9;
+}
+
+.card__media--swap a {
+	height: 100%;
+}
+
+.card__media--swap .card__image {
+	position: absolute;
+	inset: 0;
+	height: 100%;
+	transition:
+		opacity 0.22s ease,
+		transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+		filter 0.22s ease;
+}
+
+.card__image--hover {
+	opacity: 0;
+	transform: scale(1.025);
+}
+
+.card:hover .card__media--swap .card__image--splash,
+.card:focus-within .card__media--swap .card__image--splash {
+	opacity: 0;
+	transform: scale(1.025);
+}
+
+.card:hover .card__media--swap .card__image--hover,
+.card:focus-within .card__media--swap .card__image--hover {
+	opacity: 1;
+	transform: scale(1);
+}
+
 .card__body {
 	display: flex;
 	flex: 1;
@@ -723,6 +764,17 @@ p {
 .home-action-panel--with-image:hover,
 .home-action-panel--with-image:focus-within {
 	z-index: 3;
+}
+
+.home-action-panel--contact {
+	grid-column: 1 / -1;
+	grid-template-columns: minmax(0, 1fr) auto;
+	gap: 1rem;
+	align-items: center;
+}
+
+.home-action-panel--contact .action-description {
+	margin-bottom: 0;
 }
 
 .home-action-copy {
@@ -1302,6 +1354,10 @@ p {
 
 	.home-action-panel--with-image {
 		grid-template-columns: minmax(0, 60%) minmax(104px, 40%);
+	}
+
+	.home-action-panel--contact {
+		grid-template-columns: 1fr;
 	}
 
 	.home-action-media__full {

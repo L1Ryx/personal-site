@@ -4,9 +4,18 @@ import Card from '../components/Card.astro';
 import Layout from '../layouts/Layout.astro';
 
 const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+const preferredTypes = [
+	'Audio Programming',
+	'Middleware and Audio Implementation',
+	'Games',
+	'Tools Programming',
+	'Systems Programming',
+];
+const projectTypes = new Set(projects.flatMap((project) => project.data.types));
 const types = [
 	'All Projects',
-	...Array.from(new Set(projects.flatMap((project) => project.data.types))),
+	...preferredTypes.filter((type) => projectTypes.has(type)),
+	...Array.from(projectTypes).filter((type) => !preferredTypes.includes(type)),
 ];
 
 const projectLinks = (project) => [
@@ -22,17 +31,8 @@ const projectLinks = (project) => [
 >
 	<section class="projects-hero">
 		<div class="container projects-hero__inner">
-			<p class="eyebrow">Projects</p>
-			<h1>My Projects</h1>
-			<p class="lede">
-				A filtered collection of audio programming, technical audio, game systems, tools, and
-				systems programming work. Each card links to a Markdown-backed detail page.
-			</p>
-		</div>
-	</section>
-
-	<section class="section projects-section">
-		<div class="container">
+			<p class="eyebrow">projects.md</p>
+			<h1>Projects</h1>
 			<div class="filter-bar" aria-label="Project filters">
 				{types.map((type, index) => (
 					<button
@@ -44,7 +44,12 @@ const projectLinks = (project) => [
 					</button>
 				))}
 			</div>
+		</div>
+	</section>
 
+	<section class="section projects-section">
+		<div class="container">
+			<p class="projects-note">Click on each card for more details.</p>
 			<div class="project-card-grid" data-project-grid>
 				{projects.map((project) => (
 					<Card

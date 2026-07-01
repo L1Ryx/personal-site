@@ -7,7 +7,7 @@ order: 40
 featured: false
 types:
   - Games
-  - Technical Audio and Middleware Work
+  - Middleware and Audio Implementation
 tags:
   - Unity
   - VFX

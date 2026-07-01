@@ -6,8 +6,8 @@ role: Lead Engineer, Audio
 order: 10
 featured: true
 types:
-  - Technical Audio and Middleware Work
-  - Audio Programming and DSP
+  - Middleware and Audio Implementation
+  - Audio Programming
   - Games
 tags:
   - Unity

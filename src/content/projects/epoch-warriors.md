@@ -7,7 +7,7 @@ order: 50
 featured: false
 types:
   - Games
-  - Audio Programming and DSP
+  - Audio Programming
   - Systems Programming
 tags:
   - Unity

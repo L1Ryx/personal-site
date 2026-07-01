@@ -6,7 +6,7 @@ role: Technical Lead
 order: 20
 featured: true
 types:
-  - Audio Programming and DSP
+  - Audio Programming
   - Systems Programming
   - Games
 tags:

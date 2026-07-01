@@ -64,23 +64,16 @@ const links = [
 				</aside>
 
 				<div class="project-content">
-					{
-						project.data.demoVideo ? (
-							<div class="demo-frame">
-								<iframe
-									src={project.data.demoVideo}
-									title={`${project.data.title} demo video`}
-									allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-									allowfullscreen
-								/>
-							</div>
-						) : (
-							<div class="demo-placeholder">
-								<span>Demo video placeholder</span>
-								<p>Drop a YouTube or Vimeo embed URL into this project's Markdown frontmatter.</p>
-							</div>
-						)
-					}
+					{project.data.demoVideo && (
+						<div class="demo-frame">
+							<iframe
+								src={project.data.demoVideo}
+								title={`${project.data.title} demo video`}
+								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+								allowfullscreen
+							/>
+						</div>
+					)}
 					<div class="markdown-body">
 						<Content />
 					</div>

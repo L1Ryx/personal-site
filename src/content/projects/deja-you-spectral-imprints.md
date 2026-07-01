@@ -1,5 +1,5 @@
 ---
-title: Spectral Imprints for Deja You
+title: Spectral Imprints DSP for Deja You
 subtitle: Generation-driven DSP for time-loop ghosts
 summary: A custom real-time DSP layer for Deja You that gives replayed lifetimes progressively degraded, memory-like audio.
 brow: deja-you-spectral-imprints.md

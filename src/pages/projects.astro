@@ -1,89 +1,85 @@
 ---
-import ButtonLink from '../components/ButtonLink.astro';
+import { getCollection } from 'astro:content';
 import Card from '../components/Card.astro';
-import SectionHeader from '../components/SectionHeader.astro';
-import { additionalProjects, featuredProjects } from '../data/projects';
 import Layout from '../layouts/Layout.astro';
 
-const groups = [
-	{
-		eyebrow: 'Featured projects',
-		title: 'The strongest current portfolio signals.',
-		lede: 'These are the projects that best show the site identity: audio programming, gameplay systems, technical implementation, and polished interactive work.',
-		projects: featuredProjects,
-	},
-	{
-		eyebrow: 'Additional work',
-		title: 'Collaborative, leadership, and experimental projects.',
-		lede: 'These cards round out the gallery and give us places to add final media, links, and writeups as the portfolio matures.',
-		projects: additionalProjects,
-	},
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+const types = [
+	'All Projects',
+	...Array.from(new Set(projects.flatMap((project) => project.data.types))),
+];
+
+const projectLinks = (project) => [
+	{ label: 'Details', href: `/projects/${project.id}` },
+	...(project.data.github ? [{ label: 'GitHub', href: project.data.github }] : []),
+	...(project.data.liveDemo ? [{ label: 'Demo', href: project.data.liveDemo }] : []),
 ];
 ---
 
 <Layout
 	title="Projects - Shawn Guo"
-	description="Selected game, audio programming, and interactive software projects by Shawn Guo."
+	description="Project gallery for Shawn Guo: audio programming, technical audio, games, tools, and systems programming."
 >
-	<section class="hero hero--compact">
-		<div class="container">
+	<section class="projects-hero">
+		<div class="container projects-hero__inner">
 			<p class="eyebrow">Projects</p>
-			<h1>Systems with playable proof.</h1>
+			<h1>My Projects</h1>
 			<p class="lede">
-				A focused gallery of game, audio programming, interactive software, and leadership work.
-				Each card is designed to hold media, role context, technical highlights, and links as the
-				final assets come in.
+				A filtered collection of audio programming, technical audio, game systems, tools, and
+				systems programming work. Each card links to a Markdown-backed detail page.
 			</p>
-			<div class="cluster">
-				<ButtonLink href="/audio-programming">Audio Programming</ButtonLink>
-				<ButtonLink href="/software-engineering" variant="secondary">Software Engineering</ButtonLink>
+		</div>
+	</section>
+
+	<section class="section projects-section">
+		<div class="container">
+			<div class="filter-bar" aria-label="Project filters">
+				{types.map((type, index) => (
+					<button
+						class:list={['filter-button', index === 0 && 'is-active']}
+						type="button"
+						data-filter={type}
+					>
+						{type}
+					</button>
+				))}
+			</div>
+
+			<div class="project-card-grid" data-project-grid>
+				{projects.map((project) => (
+					<Card
+						title={project.data.title}
+						meta={`${project.data.role} / ${project.data.subtitle}`}
+						tags={project.data.tags}
+						image={project.data.image}
+						imageAlt={project.data.imageAlt}
+						href={`/projects/${project.id}`}
+						filterTypes={project.data.types}
+						links={projectLinks(project)}
+					>
+						<p>{project.data.summary}</p>
+					</Card>
+				))}
 			</div>
 		</div>
 	</section>
 
-	{groups.map((group, index) => (
-		<section class:list={['section', index === 1 && 'dark']}>
-			<div class="container project-group">
-				<SectionHeader eyebrow={group.eyebrow} title={group.title} lede={group.lede} />
-				<div class="grid wide">
-					{group.projects.map((project) => (
-						<Card
-							title={project.title}
-							meta={`${project.role} / ${project.meta}`}
-							tags={project.tags}
-							image={project.image}
-							imageAlt={project.imageAlt}
-							links={project.links}
-						>
-							<p>{project.description}</p>
-						</Card>
-					))}
-				</div>
-			</div>
-		</section>
-	))}
+	<script>
+		const buttons = Array.from(document.querySelectorAll('[data-filter]'));
+		const cards = Array.from(document.querySelectorAll('[data-types]'));
 
-	<section class="section tight">
-		<div class="container split">
-			<div class="callout">
-				<p class="eyebrow">Next content pass</p>
-				<h2>Replace placeholders with concrete proof.</h2>
-				<p>
-					The gallery is ready for real screenshots, gameplay clips, source links, build links,
-					trailers, and short demo captions.
-				</p>
-			</div>
-			<div class="card">
-				<div class="card__body">
-					<h3>Best assets to collect</h3>
-					<ul class="feature-list">
-						<li>One strong still image or GIF per featured project.</li>
-						<li>Playable links, trailer links, GitHub links, or NDA-safe notes per card.</li>
-						<li>Short technical captions for Ducks Afar, Vesuvius, and Deja You.</li>
-						<li>Any public Serious Point Games, Quest2Learn, or HGDS links worth including.</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</section>
+		buttons.forEach((button) => {
+			button.addEventListener('click', () => {
+				const filter = button.getAttribute('data-filter');
+
+				buttons.forEach((candidate) => candidate.classList.toggle('is-active', candidate === button));
+
+				cards.forEach((card) => {
+					const types = card.getAttribute('data-types')?.split('|') ?? [];
+					const show = filter === 'All Projects' || types.includes(filter ?? '');
+					card.toggleAttribute('hidden', !show);
+				});
+			});
+		});
+	</script>
 </Layout>

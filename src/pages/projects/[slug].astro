@@ -1,0 +1,91 @@
+---
+import { getCollection, render } from 'astro:content';
+import ButtonLink from '../../components/ButtonLink.astro';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+	const projects = await getCollection('projects');
+
+	return projects.map((project) => ({
+		params: { slug: project.id },
+		props: { project },
+	}));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+
+const links = [
+	...(project.data.github ? [{ label: 'GitHub', href: project.data.github }] : []),
+	...(project.data.liveDemo ? [{ label: 'Live Demo', href: project.data.liveDemo }] : []),
+	...(project.data.external ? [{ label: 'External Link', href: project.data.external }] : []),
+];
+---
+
+<Layout
+	title={`${project.data.title} - Shawn Guo`}
+	description={project.data.summary}
+>
+	<article>
+		<section class="project-detail-hero">
+			<div class="container project-detail-hero__grid">
+				<div>
+					<p class="eyebrow">{project.data.role}</p>
+					<h1>{project.data.title}</h1>
+					<p class="lede">{project.data.summary}</p>
+					<div class="cluster">
+						<ButtonLink href="/projects">All Projects</ButtonLink>
+						{links.map((link) => (
+							<ButtonLink href={link.href} variant="secondary">{link.label}</ButtonLink>
+						))}
+					</div>
+				</div>
+				<figure class="project-detail-hero__media">
+					<img src={project.data.image} alt={project.data.imageAlt} />
+				</figure>
+			</div>
+		</section>
+
+		<section class="section">
+			<div class="container project-detail-layout">
+				<aside class="project-sidebar">
+					<div>
+						<p class="eyebrow">Type</p>
+						<div class="card__tags">
+							{project.data.types.map((type) => <span class="tag">{type}</span>)}
+						</div>
+					</div>
+					<div>
+						<p class="eyebrow">Tech</p>
+						<div class="card__tags">
+							{project.data.tags.map((tag) => <span class="tag">{tag}</span>)}
+						</div>
+					</div>
+				</aside>
+
+				<div class="project-content">
+					{
+						project.data.demoVideo ? (
+							<div class="demo-frame">
+								<iframe
+									src={project.data.demoVideo}
+									title={`${project.data.title} demo video`}
+									allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+									allowfullscreen
+								/>
+							</div>
+						) : (
+							<div class="demo-placeholder">
+								<span>Demo video placeholder</span>
+								<p>Drop a YouTube or Vimeo embed URL into this project's Markdown frontmatter.</p>
+							</div>
+						)
+					}
+					<div class="markdown-body">
+						<Content />
+					</div>
+				</div>
+			</div>
+		</section>
+	</article>
+</Layout>

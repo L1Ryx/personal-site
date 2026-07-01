@@ -6,22 +6,42 @@ interface Props {
 	image?: string;
 	imageAlt?: string;
 	links?: { label: string; href: string }[];
+	href?: string;
+	filterTypes?: string[];
 }
 
-const { title, meta, tags = [], image, imageAlt = '', links = [] } = Astro.props;
+const {
+	title,
+	meta,
+	tags = [],
+	image,
+	imageAlt = '',
+	links = [],
+	href,
+	filterTypes = [],
+} = Astro.props;
 ---
 
-<article class:list={['card', image && 'card--with-media']}>
+<article
+	class:list={['card', image && 'card--with-media']}
+	data-types={filterTypes.join('|')}
+>
 	{
 		image && (
 			<div class="card__media">
-				<img src={image} alt={imageAlt} loading="eager" />
+				{href ? (
+					<a href={href} aria-label={`View ${title}`}>
+						<img src={image} alt={imageAlt} loading="eager" />
+					</a>
+				) : (
+					<img src={image} alt={imageAlt} loading="eager" />
+				)}
 			</div>
 		)
 	}
 	<div class="card__body">
 		{meta && <div class="card__meta">{meta}</div>}
-		<h3>{title}</h3>
+		<h3>{href ? <a class="card__title-link" href={href}>{title}</a> : title}</h3>
 		<div>
 			<slot />
 		</div>

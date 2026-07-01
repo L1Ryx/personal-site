@@ -1,126 +1,79 @@
 ---
+import { getCollection } from 'astro:content';
 import ButtonLink from '../components/ButtonLink.astro';
-import Card from '../components/Card.astro';
-import SectionHeader from '../components/SectionHeader.astro';
-import { experiences } from '../data/experience';
-import { profile, skillGroups } from '../data/profile';
-import { featuredProjects } from '../data/projects';
+import { profile } from '../data/profile';
 import Layout from '../layouts/Layout.astro';
+
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+const highlightProjects = projects.filter((project) => project.data.featured).slice(0, 3);
 ---
 
-<Layout
-	title="Shawn Guo - Systems, Gameplay, and Audio Programming"
-	description={profile.tagline}
->
-	<section class="hero">
-		<div class="container hero__grid">
-			<div>
-				<p class="eyebrow">Systems / Gameplay / Audio</p>
-				<h1>Systems, gameplay, audio.</h1>
-				<p class="lede">
-					I am Shawn Guo, a software engineer working across C/C++ runtime systems,
-					Unity gameplay architecture, technical audio, DSP, and interactive tools.
-				</p>
-				<div class="cluster" aria-label="Primary actions">
-					<ButtonLink href="/audio-programming">Audio Programming</ButtonLink>
-					<ButtonLink href="/software-engineering" variant="secondary">Software Engineering</ButtonLink>
-					<ButtonLink href="/projects" variant="secondary">Projects</ButtonLink>
-				</div>
-			</div>
-			<figure class="hero__art">
-				<img src="/assets/signal-field.png" alt="Abstract crimson and gold audio signal visualization" />
-				<figcaption class="hero__art-caption">
-					<span>runtime signal field</span>
-					<span>C++ / Wwise / DSP</span>
-				</figcaption>
-			</figure>
-		</div>
-	</section>
-
-	<section class="section">
+<Layout title="Shawn Guo - Software Engineer" description={profile.tagline}>
+	<section class="home-readme">
 		<div class="container">
-			<SectionHeader
-				eyebrow="Recruiter routes"
-				title="One profile, three useful entry points."
-				lede="The site is structured so audio, gameplay, tools, and broader software roles can all find the most relevant version of the same engineering story."
-			/>
-			<div class="grid">
-				<Card title="Audio Programming" meta="Specialist path" tags={['DSP', 'Wwise', 'Runtime Audio']}>
-					<p>
-						Low-level audio systems, middleware integration, gameplay-state-driven implementation,
-						and production audio tooling.
-					</p>
-				</Card>
-				<Card title="Gameplay & Systems" meta="Game engineering path" tags={['Unity', 'C#', 'Architecture']}>
-					<p>
-						Puzzle systems, interaction logic, event pipelines, feedback loops, and maintainable
-						runtime architecture.
-					</p>
-				</Card>
-				<Card title="Software Engineering" meta="General SWE path" tags={['C/C++', 'React', 'Tools']}>
-					<p>
-						Production C/C++, interactive web software, full-stack tools, schema-driven systems,
-						and developer-facing workflows.
-					</p>
-				</Card>
-			</div>
-		</div>
-	</section>
-
-	<section class="section dark">
-		<div class="container split">
-			<SectionHeader
-				eyebrow="Recent work"
-				title="AAA production experience plus independent systems work."
-				lede="The foundation of the portfolio is a mix of professional engineering roles and public-facing projects that show how the systems are designed."
-			/>
-			<div class="timeline">
-				{experiences.slice(0, 4).map((experience) => (
-					<Card
-						title={experience.company}
-						meta={`${experience.role} / ${experience.timeframe}`}
-						tags={experience.tags}
-						image={experience.image}
-						imageAlt={experience.imageAlt}
-					>
-						<p>{experience.description}</p>
-					</Card>
-				))}
-			</div>
-		</div>
-	</section>
-
-	<section class="section">
-		<div class="container">
-			<SectionHeader
-				eyebrow="Featured projects"
-				title="Projects that make the specialization concrete."
-				lede="These are the first cards to refine with final media, links, and demo copy as the site grows."
-			/>
-			<div class="grid">
-				{featuredProjects.map((project) => (
-					<Card title={project.title} meta={project.meta} tags={project.tags}>
-						<p>{project.description}</p>
-					</Card>
-				))}
-			</div>
-		</div>
-	</section>
-
-	<section class="section tight">
-		<div class="container split">
-			<div class="callout">
-				<p class="eyebrow">Skills snapshot</p>
-				<h2>Technical range without losing the thread.</h2>
+			<p class="eyebrow">Welcome</p>
+			<h1>Hello there!</h1>
+			<div class="home-about-copy">
 				<p>
-					The through-line is real-time interactive software: systems that need to respond clearly,
-					perform well, and stay usable by teams.
+					I'm Shawn Guo, a software engineer specializing in systems, gameplay, and audio
+					programming.
+				</p>
+				<p>
+					I recently graduated from <strong>Johns Hopkins University</strong> with a B.S. in
+					Computer Science and from the Peabody Institute's Music for New Media program with
+					a B.M. in Music for New Media.
+				</p>
+				<p>
+					I previously worked as a C++ Software Engineering Intern on the Call of Duty franchise
+					at <strong>Activision / Raven Software</strong>, where I worked on runtime audio
+					systems, tooling, and production audio pipelines.
+				</p>
+				<div class="home-logo-row" aria-label="Activision and Raven Software logos">
+					<img src="/assets/activision-logo.png" alt="Activision" />
+					<img src="/assets/raven-logo.png" alt="Raven Software" />
+				</div>
+				<p>
+					Currently, I'm working as Lead Engineer with an audio focus at <strong>Snow Day Games</strong>
+					on <em>Vesuvius</em>, a $15k funded action-adventure game, building interactive audio
+					features that support exploration, combat, ambience, and player feedback.
+				</p>
+				<a
+					class="vesuvius-cover-link"
+					href="https://store.steampowered.com/app/4557830/Vesuvius/"
+					aria-label="Open Vesuvius on Steam"
+				>
+					<img src="/assets/vesuvius-cover.png" alt="Vesuvius key art" />
+				</a>
+				<p>
+					I'm interested in spatial audio, games programming, and DSP programming for purposes
+					of immersive audio in games and interactive media.
 				</p>
 			</div>
-			<div class="grid">
-				{skillGroups.map((group) => (
-					<Card title={group.title} tags={group.items} />
-				))}
+		</div>
+	</section>
+
+	<section class="section home-section">
+		<div class="container home-stack">
+			<div class="home-block home-block--first">
+				<div class="home-block__heading">
+					<div>
+						<p class="eyebrow">Project highlights</p>
+						<h2>Three starting points.</h2>
+					</div>
+					<ButtonLink href="/projects">All Projects</ButtonLink>
+				</div>
+				<div class="mini-project-grid">
+					{highlightProjects.map((project) => (
+						<a class="mini-project-card" href={`/projects/${project.id}`}>
+							<img src={project.data.image} alt={project.data.imageAlt} />
+							<div>
+								<span>{project.data.subtitle}</span>
+								<strong>{project.data.title}</strong>
+								<p>{project.data.summary}</p>
+							</div>
+						</a>
+					))}
+				</div>
 			</div>
 		</div>
 	</section>

@@ -896,6 +896,7 @@ p {
 	grid-template-columns: minmax(0, 0.9fr) minmax(300px, 1.1fr);
 	gap: 2rem;
 	align-items: center;
+	min-width: 0;
 }
 
 .project-detail-hero__media {
@@ -904,6 +905,7 @@ p {
 	background: var(--ink);
 	box-shadow: 0 28px 70px rgba(0, 0, 0, 0.34);
 	overflow: hidden;
+	min-width: 0;
 }
 
 .project-detail-hero__media img {
@@ -917,6 +919,7 @@ p {
 	grid-template-columns: minmax(190px, 0.28fr) minmax(0, 0.72fr);
 	gap: 2rem;
 	align-items: start;
+	min-width: 0;
 }
 
 .project-sidebar {
@@ -965,6 +968,7 @@ p {
 .project-content {
 	display: grid;
 	gap: 2rem;
+	min-width: 0;
 }
 
 .project-link-panel {
@@ -1063,6 +1067,22 @@ p {
 	background: var(--surface);
 	box-shadow: var(--shadow);
 	padding: clamp(1.5rem, 4vw, 2.5rem);
+	min-width: 0;
+}
+
+.markdown-body img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+.markdown-body pre {
+	max-width: 100%;
+	overflow-x: auto;
+}
+
+.markdown-body :not(pre) > code {
+	overflow-wrap: anywhere;
 }
 
 .markdown-body h2 {

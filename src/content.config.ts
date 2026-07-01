@@ -26,6 +26,7 @@ const projects = defineCollection({
 		github: z.string().optional(),
 		liveDemo: z.string().optional(),
 		external: z.string().optional(),
+		externalLabel: z.string().optional(),
 	}),
 });
 

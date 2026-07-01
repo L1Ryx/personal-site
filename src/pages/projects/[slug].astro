@@ -18,7 +18,7 @@ const { Content } = await render(project);
 const projectLinks = [
 	...(project.data.github ? [{ label: 'GitHub', href: project.data.github, icon: 'github' }] : []),
 	...(project.data.liveDemo ? [{ label: 'Try the Game', href: project.data.liveDemo, icon: 'play' }] : []),
-	...(project.data.external ? [{ label: 'External Link', href: project.data.external, icon: 'external' }] : []),
+	...(project.data.external ? [{ label: project.data.externalLabel ?? 'External Link', href: project.data.external, icon: 'external' }] : []),
 ];
 ---
 

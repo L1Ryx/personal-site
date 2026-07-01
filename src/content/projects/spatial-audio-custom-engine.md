@@ -4,13 +4,12 @@ subtitle: Obstruction, diffraction, and room-aware reverb
 summary: A custom spatial audio system for Negative Space, where sound guides the player through a dark 3D environment.
 brow: negative-space-spatial-audio.md
 role: Audio Programmer
-order: 5
+order: 1
 featured: true
 types:
   - Audio Programming
   - Audio Implementation
   - Systems Programming
-  - Games
 tags:
   - C++
   - raylib

@@ -1,3 +1,27 @@
+@font-face {
+	font-family: 'Shawn Mono';
+	font-style: normal;
+	font-weight: 300;
+	font-display: swap;
+	src: url("/assets/mono_font/' Mono Light.ttf") format('truetype');
+}
+
+@font-face {
+	font-family: 'Shawn Mono';
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url("/assets/mono_font/' Mono Regular.ttf") format('truetype');
+}
+
+@font-face {
+	font-family: 'Shawn Mono';
+	font-style: normal;
+	font-weight: 800;
+	font-display: swap;
+	src: url("/assets/mono_font/' Mono Bold.ttf") format('truetype');
+}
+
 :root {
 	--ink: #07090d;
 	--ink-soft: #10151f;
@@ -14,8 +38,8 @@
 	--border-dark: rgba(255, 255, 255, 0.13);
 	--shadow: 0 18px 42px rgba(13, 18, 28, 0.11);
 	--container: 1100px;
-	--font-body: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-	--font-heading: 'Ubuntu Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+	--font-body: 'Shawn Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+	--font-heading: 'Shawn Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
 }
 
 * {
@@ -200,13 +224,12 @@ p {
 }
 
 .brand__mark {
-	display: grid;
 	width: 2rem;
 	height: 2rem;
-	place-items: center;
 	border: 1px solid rgba(214, 168, 79, 0.55);
-	background: linear-gradient(135deg, var(--crimson), #5f1111);
-	color: #fff8ed;
+	border-radius: 8px;
+	background: var(--ink);
+	object-fit: cover;
 }
 
 .nav {
@@ -540,6 +563,10 @@ p {
 	color: #fff8ed;
 }
 
+.home-readme .container {
+	--container: 1100px;
+}
+
 .home-readme h1 {
 	margin-bottom: 0.65rem;
 	font-size: clamp(1.8rem, 3vw, 2.55rem);
@@ -551,9 +578,10 @@ p {
 }
 
 .home-about-copy {
-	max-width: 980px;
+	max-width: none;
 	border-top: 1px solid rgba(255, 255, 255, 0.18);
 	padding-top: 0.95rem;
+	margin-inline: auto;
 }
 
 .home-about-copy p {

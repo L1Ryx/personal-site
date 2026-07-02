@@ -6,7 +6,6 @@ import Layout from '../layouts/Layout.astro';
 const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
 const preferredTypes = [
 	'Audio Programming',
-	'Audio Implementation',
 	'Tools Programming',
 	'Systems Programming',
 ];

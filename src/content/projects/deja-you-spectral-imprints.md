@@ -8,7 +8,6 @@ order: 2
 featured: true
 types:
   - Audio Programming
-  - Audio Implementation
 tags:
   - Unity
   - C#

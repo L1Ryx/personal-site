@@ -4,11 +4,10 @@ subtitle: Wwise-driven puzzle music, hardworm parameters, and ScriptableObject a
 summary: A reactive Unity/Wwise audio architecture for Ducks Afar, where puzzle choices drive cadence cues, hardworm voicings, and harmonic music states.
 brow: ducks-afar-reactive-audio.md
 role: Creator and Audio Programmer
-order: 3
+order: 5
 featured: true
 types:
   - Audio Programming
-  - Audio Implementation
   - Systems Programming
 tags:
   - Wwise

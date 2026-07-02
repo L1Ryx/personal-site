@@ -1,14 +1,13 @@
 ---
 title: Jam Audio Toolkit
 subtitle: Designer-friendly Unity audio tools, runtime systems, and desktop authoring workflow
-summary: A free Unity-native audio toolkit for quickly authoring, previewing, and triggering reusable sound and music events.
+summary: A free Unity-native audio toolkit for authoring, previewing, and triggering reusable sound and music events, with a Dear ImGui-powered companion app.
 brow: jam-audio-toolkit.md
 role: Audio Tools Programmer
-order: 5
+order: 3
 featured: true
 types:
   - Audio Programming
-  - Audio Implementation
   - Tools Programming
   - Systems Programming
 tags:

@@ -4,6 +4,30 @@ import Layout from '../layouts/Layout.astro';
 
 const games = [
 	{
+		title: 'Ducks Afar',
+		role: 'Creator, Lead Programmer',
+		summary: 'A narrative adventure game in development where players manipulate hardworms, solve machine-based challenges, and save their ducks.',
+		tags: ['Wwise', 'Unity', 'C#'],
+		image: '/assets/my-games/ducks-afar-splash.gif',
+		imageAlt: 'Ducks Afar splash image',
+		hoverImage: '/assets/my-games/ducks-afar-gameplay.gif',
+		hoverImageAlt: 'Ducks Afar gameplay preview',
+		itch: 'https://l1ryx.itch.io/ducks-afar',
+		github: 'https://github.com/L1Ryx/Ducks-Afar',
+	},
+	{
+		title: 'ADSOMNIA',
+		role: 'Gameplay Programmer, Audio Programmer',
+		summary: 'A surreal ad-horror game where invasive dream ads drain your Brain Oxygen. It won 2nd place at the 2026 Ctrl + Alt + DMV game jam.',
+		tags: ['Unity', 'C#'],
+		image: '/assets/my-games/adsomnia-splash.gif',
+		imageAlt: 'ADSOMNIA splash image',
+		hoverImage: '/assets/my-games/adsomnia-gameplay.gif',
+		hoverImageAlt: 'ADSOMNIA gameplay preview',
+		itch: 'https://yeetimameme.itch.io/adsomnia',
+		github: 'https://github.com/L1Ryx/CADMV-2026',
+	},
+	{
 		title: 'Love Language',
 		role: 'Gameplay Programmer, Technical Sound Designer, Producer',
 		summary: 'A psychological horror visual novel where your date is not quite who he seems. I led the Hopkins Game Development Society team behind the project.',
@@ -15,11 +39,47 @@ const games = [
 		itch: 'https://hopkins-game-dev-society.itch.io/love-language',
 		github: 'https://github.com/Hopkins-Game-Dev-Society/ScreamJam2025',
 	},
+	{
+		title: 'Negative Space',
+		role: 'Creator, Lead Programmer',
+		summary: 'A short first-person game set in darkness, where players use paint and spatial audio to locate hidden beacons.',
+		tags: ['C++', 'raylib', 'Dear ImGui'],
+		image: '/assets/my-games/negative-space-engine-splash.png',
+		imageAlt: 'Negative Space splash image',
+		hoverImage: '/assets/my-games/negative-space-gameplay.gif',
+		hoverImageAlt: 'Negative Space gameplay preview',
+		itch: 'https://l1ryx.itch.io/negative-space',
+		github: 'https://github.com/L1Ryx/Negative-Space',
+	},
+	{
+		title: 'Deja You',
+		role: 'Audio Programmer, Technical Sound Designer',
+		summary: 'A 2D time-loop platformer where each rewind creates a replayed version of the player, turning past lives into puzzle-solving partners.',
+		tags: ['Unity', 'C#', 'C++', 'DSP'],
+		image: '/assets/my-games/deja-you-splash.png',
+		imageAlt: 'Deja You splash image',
+		hoverImage: '/assets/my-games/deja-you-gameplay.gif',
+		hoverImageAlt: 'Deja You gameplay preview',
+		itch: 'https://johnnieshen.itch.io/deja-you',
+		github: 'https://github.com/JohnnieShen/GMTK-HGDS',
+	},
+	{
+		title: 'Aftertaste',
+		role: 'Technical Sound Designer',
+		summary: 'A 2.5D indie platformer where Tami, the tongue of a burned-out chef, rediscovers lost taste through surreal adventure and puzzles.',
+		tags: ['Wwise', 'Unity', 'C#'],
+		image: '/assets/my-games/aftertaste-splash.png',
+		imageAlt: 'Aftertaste splash image',
+		hoverImage: '/assets/my-games/aftertaste-gameplay.gif',
+		hoverImageAlt: 'Aftertaste gameplay preview',
+		steam: 'https://store.steampowered.com/app/4440750/Aftertaste/',
+	},
 ];
 
 const gameLinks = (game) => [
 	...(game.github ? [{ label: 'GitHub', href: game.github }] : []),
 	...(game.itch ? [{ label: 'Itch.io', href: game.itch }] : []),
+	...(game.steam ? [{ label: 'Steam', href: game.steam }] : []),
 ];
 ---
 
@@ -46,7 +106,7 @@ const gameLinks = (game) => [
 						imageAlt={game.imageAlt}
 						hoverImage={game.hoverImage}
 						hoverImageAlt={game.hoverImageAlt}
-						href={game.itch ?? game.github}
+						href={game.itch ?? game.steam ?? game.github}
 						links={gameLinks(game)}
 					>
 						<p>{game.summary}</p>

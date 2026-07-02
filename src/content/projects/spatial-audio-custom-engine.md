@@ -8,7 +8,6 @@ order: 1
 featured: true
 types:
   - Audio Programming
-  - Audio Implementation
   - Systems Programming
 tags:
   - C++

@@ -6,59 +6,69 @@ const games = [
 	{
 		title: 'Vesuvius',
 		role: 'Co-Creator, Audio Programmer',
+		allRoles: ['Co-Creator', 'Audio Programmer', 'Composer', 'Sound Designer'],
 		summary: 'A 2D action platformer set within a frozen volcano where you journey through fantastical alternate realities and battle corrupted mythical beasts. The game is supported by $15k in grant funding.',
 		tags: ['Wwise', 'C++', 'C#'],
 		image: '/assets/my-games/vesuvius-splash.png',
 		imageAlt: 'Vesuvius splash image',
 		hoverImage: '/assets/my-games/vesuvius-gameplay.gif',
 		hoverImageAlt: 'Vesuvius gameplay preview',
+		platforms: ['windows', 'mac'],
 		steam: 'https://store.steampowered.com/app/4557830/Vesuvius/',
 	},
 	{
 		title: 'ADSOMNIA',
-		role: 'Creator, Gameplay Programmer, Audio Programmer',
+		role: 'Creator, Lead Programmer',
+		allRoles: ['Creator', 'Lead Programmer', 'Tech Sound Designer', 'UI Designer'],
 		summary: 'A surreal ad-horror game where invasive dream ads drain your Brain Oxygen. It won 2nd place at the 2026 Ctrl + Alt + DMV game jam, yay!',
 		tags: ['Unity', 'C#'],
 		image: '/assets/my-games/adsomnia-splash.gif',
 		imageAlt: 'ADSOMNIA splash image',
 		hoverImage: '/assets/my-games/adsomnia-gameplay.gif',
 		hoverImageAlt: 'ADSOMNIA gameplay preview',
+		platforms: ['browser'],
 		itch: 'https://yeetimameme.itch.io/adsomnia',
 		github: 'https://github.com/L1Ryx/CADMV-2026',
 	},
 	{
 		title: 'Ducks Afar',
 		role: 'Creator, Lead Programmer',
+		allRoles: ['Creator', 'Lead Programmer', 'Producer', '2D Artist', 'UI Designer', 'Composer', 'Tech Sound Designer'],
 		summary: 'A narrative adventure game in development where players manipulate hardworms, solve machine-based challenges, and save their ducks.',
 		tags: ['Wwise', 'Unity', 'C#'],
 		image: '/assets/my-games/ducks-afar-splash.gif',
 		imageAlt: 'Ducks Afar splash image',
 		hoverImage: '/assets/my-games/ducks-afar-gameplay.gif',
 		hoverImageAlt: 'Ducks Afar gameplay preview',
+		platforms: ['windows', 'mac'],
 		itch: 'https://l1ryx.itch.io/ducks-afar',
 		github: 'https://github.com/L1Ryx/Ducks-Afar',
 	},
 	{
 		title: 'Love Language',
-		role: 'Gameplay Programmer, Technical Sound Designer, Producer',
+		role: 'Gameplay Programmer, Technical Sound Designer',
+		allRoles: ['Gameplay Programmer', 'Tech Sound Designer', 'Producer'],
 		summary: 'A psychological horror visual novel where your date is not quite who he seems. I led the Hopkins Game Development Society team behind the project.',
 		tags: ['FMOD', 'Unity', 'C#'],
 		image: '/assets/my-games/love-language-splash.gif',
 		imageAlt: 'Love Language splash art',
 		hoverImage: '/assets/my-games/love-language-gameplay.gif',
 		hoverImageAlt: 'Love Language gameplay preview',
+		platforms: ['browser'],
 		itch: 'https://hopkins-game-dev-society.itch.io/love-language',
 		github: 'https://github.com/Hopkins-Game-Dev-Society/ScreamJam2025',
 	},
 	{
 		title: 'Negative Space',
 		role: 'Creator, Lead Programmer',
+		allRoles: ['Creator', 'Lead Programmer', 'Sound Designer'],
 		summary: 'A short first-person game set in darkness, where players use paint and spatial audio to locate hidden beacons.',
 		tags: ['C++', 'raylib', 'Dear ImGui'],
 		image: '/assets/my-games/negative-space-engine-splash.png',
 		imageAlt: 'Negative Space splash image',
 		hoverImage: '/assets/my-games/negative-space-gameplay.gif',
 		hoverImageAlt: 'Negative Space gameplay preview',
+		platforms: ['windows', 'mac'],
 		itch: 'https://l1ryx.itch.io/negative-space',
 		github: 'https://github.com/L1Ryx/Negative-Space',
 	},
@@ -71,6 +81,7 @@ const games = [
 		imageAlt: 'Deja You splash image',
 		hoverImage: '/assets/my-games/deja-you-gameplay.gif',
 		hoverImageAlt: 'Deja You gameplay preview',
+		platforms: ['windows', 'mac'],
 		itch: 'https://johnnieshen.itch.io/deja-you',
 		github: 'https://github.com/JohnnieShen/GMTK-HGDS',
 	},
@@ -83,6 +94,7 @@ const games = [
 		imageAlt: 'Aftertaste splash image',
 		hoverImage: '/assets/my-games/aftertaste-gameplay.gif',
 		hoverImageAlt: 'Aftertaste gameplay preview',
+		platforms: ['windows', 'mac'],
 		steam: 'https://store.steampowered.com/app/4440750/Aftertaste/',
 	},
 ];
@@ -119,6 +131,9 @@ const gameLinks = (game) => [
 						hoverImageAlt={game.hoverImageAlt}
 						href={game.itch ?? game.steam ?? game.github}
 						links={gameLinks(game)}
+						titleIcon={game.steam ? 'steam' : 'itch'}
+						platformIcons={game.platforms}
+						allRoles={game.allRoles}
 					>
 						<p>{game.summary}</p>
 					</Card>

@@ -220,6 +220,15 @@ I also added packaged asset path resolution so development builds and release bu
 
 The engine includes reusable audio cue loading, randomization, round-robin playback, spatial emitters, room-aware sends, and debug visualization. This page focuses on the engine layer; I wrote separately about the audio programming work in [Spatial Audio in a Custom C++ Engine](/projects/spatial-audio-custom-engine/).
 
+<div class="demo-frame">
+  <iframe
+    src="https://www.youtube.com/embed/2kKDjIFJj1w"
+    title="Negative Space spatial audio demo video"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
+  ></iframe>
+</div>
+
 ```json
 {
   "audioMix": {

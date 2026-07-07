@@ -16,6 +16,7 @@ tags:
   - DSP
 image: /assets/negative-space-audio/negative-space-audio.gif
 imageAlt: Gameplay clip of Negative Space showing paint revealing a dark 3D room
+demoVideo: https://www.youtube.com/embed/2kKDjIFJj1w
 github: https://github.com/L1Ryx/Negative-Space
 liveDemo: https://l1ryx.itch.io/negative-space
 ---

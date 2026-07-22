@@ -19,7 +19,7 @@ github: https://github.com/L1Ryx/personal-site
 
 ## Overview
 
-This site is a custom portfolio built to show off my projects and games. I wanted the structure to stay simple while still giving deeper technical entries room to breathe.
+This site is a custom portfolio built to show off my projects and games. I wanted the structure to stay simple (relatively!).
 
 New project pages are Markdown files, so updating the portfolio usually means adding one content entry instead of touching layout code. I'd love to chat if you're looking to create something similar for your portfolio!
 

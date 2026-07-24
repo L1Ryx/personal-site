@@ -60,9 +60,7 @@ import Layout from '../layouts/Layout.astro';
 		<div class="container home-action-grid">
 			<section class="home-action-panel home-action-panel--with-image">
 				<div class="home-action-copy">
-					<p class="action-title">My Projects</p>
-					<p class="action-description">Follow my work.</p>
-					<a class="button" href="/projects">Projects</a>
+					<a class="button home-action-button" href="/projects">Projects</a>
 				</div>
 				<a class="home-action-media" href="/projects" aria-label="View my projects">
 					<img
@@ -81,9 +79,7 @@ import Layout from '../layouts/Layout.astro';
 
 			<section class="home-action-panel home-action-panel--with-image">
 				<div class="home-action-copy">
-					<p class="action-title">Games</p>
-					<p class="action-description">Check out my games!</p>
-					<a class="button" href="/games">Games</a>
+					<a class="button home-action-button" href="/games">Games</a>
 				</div>
 				<a class="home-action-media" href="/games" aria-label="View games">
 					<img class="home-action-media__crop" src="/assets/welcome/itchio.gif" alt="Games preview" />
@@ -98,9 +94,7 @@ import Layout from '../layouts/Layout.astro';
 
 			<section class="home-action-panel home-action-panel--with-image">
 				<div class="home-action-copy">
-					<p class="action-title">GitHub</p>
-					<p class="action-description">See what I'm making.</p>
-					<a class="contact-button" href={profile.github}>
+					<a class="contact-button home-action-button" href={profile.github}>
 						<svg viewBox="0 0 24 24" aria-hidden="true">
 							<path class="icon-fill" d="M12 2.5a9.5 9.5 0 0 0-3 18.52c.48.09.65-.2.65-.46v-1.74c-2.67.58-3.23-1.13-3.23-1.13-.44-1.1-1.07-1.4-1.07-1.4-.87-.6.07-.59.07-.59.96.07 1.47.99 1.47.99.86 1.46 2.25 1.04 2.8.8.09-.62.34-1.04.61-1.28-2.13-.24-4.37-1.07-4.37-4.74 0-1.05.38-1.9.99-2.57-.1-.24-.43-1.22.09-2.54 0 0 .8-.26 2.62.98A9.1 9.1 0 0 1 12 7.01c.81 0 1.62.11 2.38.32 1.82-1.24 2.62-.98 2.62-.98.52 1.32.19 2.3.09 2.54.62.67.99 1.52.99 2.57 0 3.68-2.24 4.49-4.38 4.73.35.3.66.89.66 1.8v2.57c0 .26.17.56.66.46A9.5 9.5 0 0 0 12 2.5Z" />
 						</svg>
@@ -120,9 +114,7 @@ import Layout from '../layouts/Layout.astro';
 
 			<section class="home-action-panel home-action-panel--with-image">
 				<div class="home-action-copy">
-					<p class="action-title">Itch.io</p>
-					<p class="action-description">Play my games on Itch!</p>
-					<a class="contact-button" href={profile.itch}>
+					<a class="contact-button home-action-button" href={profile.itch}>
 						<svg viewBox="0 0 24 24" aria-hidden="true">
 							<path d="M5.4 9.2h13.2" />
 							<path d="M6.6 5.2h10.8l1.2 4H5.4l1.2-4Z" />

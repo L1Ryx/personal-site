@@ -3,7 +3,7 @@ title: This Website
 subtitle: A custom Astro and TypeScript portfolio site
 summary: A custom Astro and TypeScript portfolio site for showing some of my work. It's what you're looking at right now.
 brow: personal-site.md
-order: 7
+order: 8
 featured: true
 types:
   - Full-Stack

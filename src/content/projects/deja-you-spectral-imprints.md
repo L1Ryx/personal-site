@@ -4,7 +4,7 @@ subtitle: Generation-driven DSP for time-loop ghosts
 summary: A custom real-time DSP layer for Deja You that gives replayed lifetimes progressively degraded, memory-like audio.
 brow: deja-you-spectral-imprints.md
 role: Audio Programmer
-order: 2
+order: 5
 featured: true
 types:
   - Audio Programming

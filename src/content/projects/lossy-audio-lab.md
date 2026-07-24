@@ -30,7 +30,7 @@ externalLabel: Download App
 
 ## Overview
 
-Lossy Audio Lab is a desktop tool for auditioning what packet loss and jitter can do to audio. It loads WAV or MP3 files, packetizes the decoded audio into 10 ms frames, encodes those frames with Opus, applies repeatable network impairment, and plays back the recovered result with waveform, frame energy, latency, and recovery-status visualization.
+Lossy Audio Lab is a desktop tool for auditioning what packet loss and jitter can do to your audio. It loads WAV or MP3 files, packetizes the decoded audio into 10 ms frames, encodes those frames with Opus, applies repeatable network impairment, and plays back the recovered result with waveform, frame energy, latency, and recovery-status visualization.
 
 I made this since network-audio artifacts are easy to describe badly and hard to judge without listening. Something like "20% packet loss" doesn't really tell me whether a music loop will click, smear, duck in level, or be completely unusable. A useful version of the tool needed to make those failures audible while also showing what a recovery layer does.
 

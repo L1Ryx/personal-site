@@ -58,11 +58,19 @@ import Layout from '../layouts/Layout.astro';
 
 	<section class="section home-section">
 		<div class="container home-action-grid">
-			<section class="home-action-panel home-action-panel--with-image">
-				<div class="home-action-copy">
-					<a class="button home-action-button" href="/projects">Projects</a>
-				</div>
-				<a class="home-action-media" href="/projects" aria-label="View my projects">
+			<a class="home-action-card" href="/projects" aria-label="View my projects">
+				<span class="home-action-card__copy">
+					<span class="home-action-card__title home-action-card__title--icon">
+						<img
+							class="home-action-card__icon"
+							src="/assets/icons/code.png"
+							alt=""
+							aria-hidden="true"
+						/>
+						Projects
+					</span>
+				</span>
+				<span class="home-action-media">
 					<img
 						class="home-action-media__crop"
 						src="/assets/welcome/my-projects.gif"
@@ -74,14 +82,22 @@ import Layout from '../layouts/Layout.astro';
 						alt=""
 						aria-hidden="true"
 					/>
-				</a>
-			</section>
+				</span>
+			</a>
 
-			<section class="home-action-panel home-action-panel--with-image">
-				<div class="home-action-copy">
-					<a class="button home-action-button" href="/games">Games</a>
-				</div>
-				<a class="home-action-media" href="/games" aria-label="View games">
+			<a class="home-action-card" href="/games" aria-label="View games">
+				<span class="home-action-card__copy">
+					<span class="home-action-card__title home-action-card__title--icon">
+						<img
+							class="home-action-card__icon"
+							src="/assets/icons/games.png"
+							alt=""
+							aria-hidden="true"
+						/>
+						Games
+					</span>
+				</span>
+				<span class="home-action-media">
 					<img class="home-action-media__crop" src="/assets/welcome/itchio.gif" alt="Games preview" />
 					<img
 						class="home-action-media__full"
@@ -89,19 +105,22 @@ import Layout from '../layouts/Layout.astro';
 						alt=""
 						aria-hidden="true"
 					/>
-				</a>
-			</section>
+				</span>
+			</a>
 
-			<section class="home-action-panel home-action-panel--with-image">
-				<div class="home-action-copy">
-					<a class="contact-button home-action-button" href={profile.github}>
-						<svg viewBox="0 0 24 24" aria-hidden="true">
-							<path class="icon-fill" d="M12 2.5a9.5 9.5 0 0 0-3 18.52c.48.09.65-.2.65-.46v-1.74c-2.67.58-3.23-1.13-3.23-1.13-.44-1.1-1.07-1.4-1.07-1.4-.87-.6.07-.59.07-.59.96.07 1.47.99 1.47.99.86 1.46 2.25 1.04 2.8.8.09-.62.34-1.04.61-1.28-2.13-.24-4.37-1.07-4.37-4.74 0-1.05.38-1.9.99-2.57-.1-.24-.43-1.22.09-2.54 0 0 .8-.26 2.62.98A9.1 9.1 0 0 1 12 7.01c.81 0 1.62.11 2.38.32 1.82-1.24 2.62-.98 2.62-.98.52 1.32.19 2.3.09 2.54.62.67.99 1.52.99 2.57 0 3.68-2.24 4.49-4.38 4.73.35.3.66.89.66 1.8v2.57c0 .26.17.56.66.46A9.5 9.5 0 0 0 12 2.5Z" />
-						</svg>
+			<a class="home-action-card" href={profile.github} aria-label="Open GitHub">
+				<span class="home-action-card__copy">
+					<span class="home-action-card__title home-action-card__title--icon">
+						<img
+							class="home-action-card__icon"
+							src="/assets/icons/github.png"
+							alt=""
+							aria-hidden="true"
+						/>
 						GitHub
-					</a>
-				</div>
-				<a class="home-action-media" href={profile.github} aria-label="Open GitHub">
+					</span>
+				</span>
+				<span class="home-action-media">
 					<img class="home-action-media__crop" src="/assets/welcome/github.gif" alt="GitHub preview" />
 					<img
 						class="home-action-media__full"
@@ -109,25 +128,22 @@ import Layout from '../layouts/Layout.astro';
 						alt=""
 						aria-hidden="true"
 					/>
-				</a>
-			</section>
+				</span>
+			</a>
 
-			<section class="home-action-panel home-action-panel--with-image">
-				<div class="home-action-copy">
-					<a class="contact-button home-action-button" href={profile.itch}>
-						<svg viewBox="0 0 24 24" aria-hidden="true">
-							<path d="M5.4 9.2h13.2" />
-							<path d="M6.6 5.2h10.8l1.2 4H5.4l1.2-4Z" />
-							<path d="M7 9.2v9.6h10V9.2" />
-							<path d="M9.4 12.2h5.2v3.4H9.4z" />
-							<path d="M9 5.2v4" />
-							<path d="M12 5.2v4" />
-							<path d="M15 5.2v4" />
-						</svg>
+			<a class="home-action-card" href={profile.itch} aria-label="Open Itch.io">
+				<span class="home-action-card__copy">
+					<span class="home-action-card__title home-action-card__title--icon">
+						<img
+							class="home-action-card__icon"
+							src="/assets/icons/itch.png"
+							alt=""
+							aria-hidden="true"
+						/>
 						Itch.io
-					</a>
-				</div>
-				<a class="home-action-media" href={profile.itch} aria-label="Open Itch.io">
+					</span>
+				</span>
+				<span class="home-action-media">
 					<img class="home-action-media__crop" src="/assets/welcome/my-games.gif" alt="Itch.io preview" />
 					<img
 						class="home-action-media__full"
@@ -135,38 +151,25 @@ import Layout from '../layouts/Layout.astro';
 						alt=""
 						aria-hidden="true"
 					/>
-				</a>
-			</section>
+				</span>
+			</a>
 
-			<section class="home-action-panel home-action-panel--contact">
+			<section class="home-contact-card">
 				<div>
 					<p class="action-title">Contact</p>
 					<p class="action-description">Reach out if you have any questions or want to collab!</p>
 				</div>
 				<div class="action-button-stack">
 					<a class="contact-button" href={`mailto:${profile.email}`}>
-						<svg viewBox="0 0 24 24" aria-hidden="true">
-							<path d="M4 6h16v12H4z" />
-							<path d="m4 7 8 6 8-6" />
-						</svg>
+						<img class="contact-button__icon" src="/assets/icons/email.png" alt="" aria-hidden="true" />
 						Email
 					</a>
 					<a class="contact-button" href={profile.linkedin}>
-						<svg viewBox="0 0 24 24" aria-hidden="true">
-							<path d="M5 9v10" />
-							<path d="M5 5.5v.1" />
-							<path d="M10 19v-6.2c0-2.2 1.2-3.8 3.4-3.8s3.6 1.4 3.6 4.1V19" />
-							<path d="M10 9v10" />
-						</svg>
+						<img class="contact-button__icon" src="/assets/icons/linkedin.png" alt="" aria-hidden="true" />
 						LinkedIn
 					</a>
 					<a class="contact-button" href="/assets/welcome/resume.pdf" target="_blank" rel="noreferrer">
-						<svg viewBox="0 0 24 24" aria-hidden="true">
-							<path d="M7 3.8h7.1L18 7.7v12.5H7z" />
-							<path d="M14 3.8v4h4" />
-							<path d="M9.8 12h5.4" />
-							<path d="M9.8 15.2h5.4" />
-						</svg>
+						<img class="contact-button__icon" src="/assets/icons/resume.png" alt="" aria-hidden="true" />
 						Resume
 					</a>
 				</div>

@@ -1163,38 +1163,6 @@ p {
 	background: var(--rule-light);
 }
 
-.filter-bar {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	gap: 0.85rem;
-	margin-top: 2.1rem;
-}
-
-.filter-button {
-	border: 1px solid rgba(214, 168, 79, 0.46);
-	border-radius: 999px;
-	background: transparent;
-	color: var(--gold-soft);
-	cursor: pointer;
-	font-weight: 800;
-	padding: 0.8rem 1.1rem;
-	transition:
-		background 0.18s ease,
-		border-color 0.18s ease,
-		color 0.18s ease,
-		transform 0.18s ease;
-}
-
-.filter-button:hover,
-.filter-button:focus-visible,
-.filter-button.is-active {
-	border-color: var(--gold);
-	background: var(--gold);
-	color: #16120a;
-	transform: translateY(-1px);
-}
-
 .project-card-grid {
 	display: grid;
 	grid-template-columns: repeat(2, minmax(0, 1fr));

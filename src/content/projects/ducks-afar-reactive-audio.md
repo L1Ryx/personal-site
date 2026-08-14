@@ -31,9 +31,9 @@ Ducks Afar is a puzzle-driven game where players manipulate creatures called har
 
 I recommend watching the demo video above first, since it shows the puzzle loop, machine interactions, and reactive audio changes in motion before this page breaks down the implementation.
 
-Because I am both the game's creator and audio programmer, I wanted the audio to respond to the actual puzzle logic rather than sit on top of it as fixed sound effects. Picking up hardworms, placing them into machines, taking outputs, and changing the puzzle's harmonic state all feed into the audio system.
+As both the game's creator and audio programmer, I wanted the audio to respond to the actual puzzle logic as much as possible. Picking up hardworms, placing them into machines, taking outputs, and changing the puzzle's harmonic state all feed into the audio system.
 
-The current implementation uses Unity and Wwise, with gameplay code talking to project-authored ScriptableObjects instead of raw Wwise strings whenever possible. That keeps level logic readable while still letting Wwise handle event playback, RTPCs, states, and music transitions.
+The current implementation uses Unity and Wwise, with gameplay code talking to project-authored ScriptableObjects instead of raw Wwise strings whenever possible. 
 
 ![Gameplay clip showing the player picking up hardworms](/assets/ducks-afar-audio/ducks-afar-audio-gameplay-picking-up-worms.gif)
 
@@ -293,9 +293,9 @@ public sealed class PuzzleMusicPlayer : MusicPlayerBase
 
 ## Authoring and Iteration
 
-The useful part of this architecture is not just that the game can play sounds. It is that the behavior is visible and adjustable at the level where design decisions happen. A machine can expose cue references, RTPC assets, and UnityEvent callbacks in the Inspector, while the lower-level audio system remains centralized and consistent.
+The useful part of this architecture is that the behavior is visible and adjustable at the level where design decisions happen. A machine can expose cue references, RTPC assets, and UnityEvent callbacks in the Inspector, while the lower-level audio system remains centralized and consistent.
 
-That gives the project a more practical workflow:
+That gives the project a better workflow:
 
 - gameplay code decides what happened in puzzle terms
 - ScriptableObjects describe which Wwise concepts are relevant
@@ -306,6 +306,6 @@ That gives the project a more practical workflow:
 
 ![Audio state value ScriptableObject inspector for a puzzle key](/assets/ducks-afar-audio/ducks-afar-audio-state-value-SO.png)
 
-The result is a puzzle audio layer where puzzle choices, machine state, and musical progression are connected. Placing a hardworm now changes voicing, cadence, and harmonic direction, making the puzzle system feel more alive without making the gameplay scripts know how Wwise is built internally.
+Placing a hardworm now changes voicing, cadence, and harmonic direction, making the puzzle system feel more alive without making the gameplay scripts know how Wwise is built internally.
 
 ![Sheet music sketch for hardworm musical voicings](/assets/ducks-afar-audio/ducks-afar-audio-worms-sheet-music.png)

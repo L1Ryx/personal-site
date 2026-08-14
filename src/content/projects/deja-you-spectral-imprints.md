@@ -37,11 +37,11 @@ externalLabel: Itch.io
 
 ![Deja You banner art](/assets/deja-you-spectral-imprints/deja-you-banner.png)
 
-Deja You is a 2D time-loop platformer where each rewind creates a replayed version of the player. These past lifetimes keep performing the actions the player recorded earlier, so solving a level often means cooperating with older versions of yourself.
+Deja You is a 2D time-loop platformer where each rewind creates a replayed version of the player. These past lifetimes keep performing the actions the player recorded earlier, so solving a level means cooperating with older versions of yourself.
 
 Spectral Imprints is a custom DSP layer I added to make those replayed lifetimes audible as memory traces. Instead of every ghost using the same clean sound as the current player, each lifetime receives a generation-based audio profile. Newer ghosts stay clear and close. Older ghosts become quieter, darker, delayed, and more degraded. I also created the sound design for the replacement character sounds, so the source material and the processing chain were designed together.
 
-I built this as a middleware-independent audio programming feature inside a project that originally used Wwise for character events. The Spectral Imprints path is fully outside that middleware: character sounds are played through a custom native/runtime audio layer and processed with lower-level buffer code tied directly to gameplay state.
+I built this as a middleware-independent audio programming feature inside a project that originally used Wwise for character events. The Spectral Imprints layer is fully outside that middleware: character sounds are played through a custom native/runtime audio layer and processed with lower-level buffer code tied directly to gameplay state.
 
 ![Deja You gameplay showing multiple replayed player lifetimes in one level](/assets/deja-you-spectral-imprints/deja-you-spectral-imprints-gameplay-2.png)
 
@@ -131,7 +131,7 @@ processed = Quantize(processed, bitLevels);
 data[dataIndex] = Clamp01Audio(processed * gain);
 ```
 
-This was not necessary for a project of this size, but it was a deliberate audio-programming choice. It keeps the tight sample math separate from gameplay code, creates a small native systems layer, and mirrors how performance-sensitive DSP can be isolated in larger audio runtimes.
+This may not have been necessary for a project of this size, but it keeps the tight sample math separate from gameplay code, creates a small native systems layer, and is like how more performance-sensitive DSP can be isolated in larger audio runtimes.
 
 The C# side calls the native module through a narrow interop wrapper. If the native plugin is missing or fails to load, the system falls back to the managed implementation of the same degradation stage.
 
@@ -152,22 +152,3 @@ if (SpectralImprintNativeDsp.TryProcessDegradation(
 nativeDspAvailable = false;
 ProcessManagedDegradationOnly(...);
 ```
-
-## Replacing Character Middleware Events
-
-Deja You already had middleware integration for its original audio implementation, but I wanted this feature to demonstrate lower-level audio work rather than middleware authoring. I added a small gate around the old character and lifetime-related events, including rolling, jumping, landing, spawning, dying, and button presses.
-
-With those events disabled, the Spectral Imprints layer plays its own character clips and processes them through the custom DSP chain. The rest of the game audio can keep using its original routing, but the ghost/player sound design showcased here is generated and processed by the native Spectral Imprints path. For showcase recording, I also added a ScriptableObject-driven music-volume preset so the music can be lowered without building a full settings menu.
-
-## Runtime Debug Panel
-
-To make the system easier to tune, I built a runtime debug panel that summarizes the currently active generations. It shows which generation buckets are alive and how much attenuation, muffling, echo, and crushing are being applied.
-
-![Runtime Spectral Imprints debug panel showing generation buckets and DSP intensity meters](/assets/deja-you-spectral-imprints/deja-you-spectral-imprints-debug.png)
-
-The panel also includes two practical debugging toggles:
-
-- before/after mode, which forces ghosts into clean generation 0 audio for comparison
-- native DSP status, which reports whether the C++ plugin is active or the C# fallback is running
-
-This helped me verify that the gameplay generation state matched the audio I was hearing. When a ghost aged, I could confirm that its attenuation, filter amount, delay, and degradation increased in the expected bucket instead of guessing from listening alone.

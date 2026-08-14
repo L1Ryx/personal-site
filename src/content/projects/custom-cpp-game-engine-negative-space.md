@@ -27,7 +27,7 @@ liveDemo: https://l1ryx.itch.io/negative-space
 
 Negative Space runs on a built-from-scratch C++ game engine inspired by Professor Greg Anderson's engine, which I worked with him on while helping develop EN.601.355: Game Engine Programming at Johns Hopkins University.
 
-The original engine foundation was primarily 2D-focused. For this project, I extended it into a small but complete 3D runtime: first-person movement, raycast interaction, static collision, JSON-authored rooms, paint-based visibility, debug tooling, audio integration, and packaged desktop builds.
+The original engine foundation was primarily 2D-focused. For this project, I extended it into a small but complete 3D engine, including first-person movement, raycast interaction, static collision, JSON-authored rooms, paint-based visibility, debug tooling, audio integration, and packaged desktop builds.
 
 ![Negative Space game thumbnail showing the title and dark painted environment](/assets/negative-space-engine/negative-space-engine-thumbnail.png)
 
@@ -190,8 +190,6 @@ struct UiCommand
 };
 ```
 
-The result was a simple HUD, title screen, win screen, fullscreen/restart controls, and runtime debug panels without tying all UI drawing directly to the game renderer.
-
 ![Dear ImGui debug panels for runtime engine and gameplay tuning](/assets/negative-space-engine/negative-space-engine-debug-imgui.png)
 
 ## Asset and Runtime Systems
@@ -280,5 +278,3 @@ add_executable(negative_space_engine
     audio/AudioManager.cpp
 )
 ```
-
-This made Negative Space easier to distribute on itch.io while keeping the repository structured as a custom engine project rather than a single monolithic game file.

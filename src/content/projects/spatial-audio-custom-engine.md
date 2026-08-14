@@ -35,7 +35,7 @@ This page focuses on the audio system; I wrote separately about the engine archi
 
 The base system supports 3D listeners and emitters, distance attenuation, stereo panning, per-emitter range controls, and runtime tuning. Emitters are updated from world-space positions, then mixed through a central audio manager that also handles gain staging, limiting, peak metering, and cue playback.
 
-This made the beacons readable before any advanced propagation was added: players could already turn toward a source, estimate distance, and use volume changes to navigate.
+This makes the beacons readable before any advanced propagation was added: players could already turn toward a source, estimate distance, and use volume changes to navigate.
 
 ```cpp
 float calculateDistanceVolume(const SpatialAudioEmitter& emitter, float distance)
@@ -62,7 +62,7 @@ float calculatePanToPoint(const SpatialAudioListener& listener, float x, float z
 
 ## Obstruction
 
-To make walls matter, I added raycast-based obstruction checks between the listener and each active emitter. When geometry blocks the direct path, the system reduces level and applies low-pass filtering so the sound becomes muffled instead of simply disappearing.
+To make wall obstruction matter, I added raycast-based obstruction checks between the listener and each active emitter. When geometry blocks the direct path, the system reduces level and applies low-pass filtering so the sound becomes muffled instead of just disappearing.
 
 The obstruction values are smoothed over time to avoid abrupt cuts when the player moves quickly around corners or crosses a doorway.
 
@@ -100,9 +100,9 @@ float cutoffHz = clearCutoffHz + (occludedCutoffHz - clearCutoffHz) * occlusionA
 
 ## Diffraction and Portals
 
-Direct line-of-sight was not enough for the kind of environment I wanted. Sounds needed to travel through doorways, gaps, and hallway openings, especially when the player and emitter were in different rooms.
+Direct line-of-sight sound travel wasn't enough for the kind of environment I wanted. Sounds need to travel through doorways, gaps, and hallway openings, especially when the player and emitter were in different rooms.
 
-I added authored acoustic portals to the room data, then used them to evaluate alternate propagation paths. The system can route sound through nearby openings and blend valid paths, creating a simple diffraction approximation that keeps emitters audible through believable routes.
+I added authored acoustic portals to the room data, then used them to evaluate alternate propagation paths. The system can route sound through nearby openings and blend valid paths, creating a simple diffraction approximation that keeps emitters audible through these routes.
 
 ```cpp
 for (size_t i = 0; i < portals.size(); i++)
@@ -209,8 +209,6 @@ if (activeConvolver.isLoaded() && reverbSend > 0.0001f)
 ## Audio Cues and Variation
 
 The engine audio layer also supports authored cues, round-robin sample selection, pitch and volume randomization, reverb sends, and delay sends. I used this for footsteps, paint shots, beacon radar pings, pickup sounds, and looping room tone.
-
-These systems kept repeated sounds from feeling static while still giving each sound category its own mix behavior.
 
 ```json
 {

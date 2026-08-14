@@ -4,17 +4,6 @@ import Card from '../components/Card.astro';
 import Layout from '../layouts/Layout.astro';
 
 const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
-const preferredTypes = [
-	'Audio Programming',
-	'Tools Programming',
-	'Systems Programming',
-];
-const projectTypes = new Set(projects.flatMap((project) => project.data.types));
-const types = [
-	'All Projects',
-	...preferredTypes.filter((type) => projectTypes.has(type)),
-	...Array.from(projectTypes).filter((type) => !preferredTypes.includes(type)),
-];
 
 const projectLinks = (project) => [
 	{ label: 'Details', href: `/projects/${project.id}` },
@@ -31,24 +20,13 @@ const projectLinks = (project) => [
 		<div class="container projects-hero__inner">
 			<p class="eyebrow">projects.md</p>
 			<h1>My Projects</h1>
-			<div class="filter-bar" aria-label="Project filters">
-				{types.map((type, index) => (
-					<button
-						class:list={['filter-button', index === 0 && 'is-active']}
-						type="button"
-						data-filter={type}
-					>
-						{type}
-					</button>
-				))}
-			</div>
 		</div>
 	</section>
 
 	<section class="section projects-section">
 		<div class="container">
 			<p class="projects-note">Click on each card for more details.</p>
-			<div class="project-card-grid" data-project-grid>
+			<div class="project-card-grid">
 				{projects.map((project) => (
 					<Card
 						title={project.data.title}
@@ -66,23 +44,4 @@ const projectLinks = (project) => [
 			</div>
 		</div>
 	</section>
-
-	<script>
-		const buttons = Array.from(document.querySelectorAll('[data-filter]'));
-		const cards = Array.from(document.querySelectorAll('[data-types]'));
-
-		buttons.forEach((button) => {
-			button.addEventListener('click', () => {
-				const filter = button.getAttribute('data-filter');
-
-				buttons.forEach((candidate) => candidate.classList.toggle('is-active', candidate === button));
-
-				cards.forEach((card) => {
-					const types = card.getAttribute('data-types')?.split('|') ?? [];
-					const show = filter === 'All Projects' || types.includes(filter ?? '');
-					card.toggleAttribute('hidden', !show);
-				});
-			});
-		});
-	</script>
 </Layout>

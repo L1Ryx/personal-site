@@ -1,7 +1,7 @@
 ---
 title: Jam Audio Toolkit
 subtitle: Designer-friendly Unity audio tools, runtime systems, and desktop authoring workflow
-summary: A free Unity-native audio toolkit for authoring, previewing, and triggering reusable sound and music events, with a Dear ImGui-powered companion app.
+summary: A free Unity-native audio toolkit for authoring, previewing, and triggering reusable sound and music events, with a Dear ImGui companion app.
 brow: jam-audio-toolkit.md
 role: Audio Tools Programmer
 order: 3
@@ -32,9 +32,9 @@ externalLabel: Download Companion
 
 ## Overview
 
-Jam Audio Toolkit is a free Unity-native audio package for getting game audio running quickly without building a custom audio system first. I built it after spending too many game jam hours repeating the same setup work: making reusable sound definitions, wiring music fades, adding random pitch and volume variation, keeping repeated clips from feeling mechanical, and giving designers a way to trigger audio without writing one-off scripts for every object.
+Jam Audio Toolkit is a free Unity-native audio package for getting game audio running quickly without building a custom audio system first. I built it after spending too many game jam hours repeating the same setup work, like making reusable sound definitions, wiring music fades, adding random pitch and volume variation, keeping repeated clips from feeling mechanical, and giving designers a way to trigger audio without writing one-off scripts for every object.
 
-The toolkit has two sides. Inside Unity, reusable `JamSoundEvent` and `JamMusicEvent` ScriptableObjects drive runtime playback, editor inspectors, no-code scene components, and a small one-line programmer API. Outside Unity, the optional Jam Audio Toolkit Companion app provides a focused desktop authoring workflow for previewing and exporting event data.
+The toolkit has two sides. Inside Unity, reusable `JamSoundEvent` and `JamMusicEvent` ScriptableObjects drive runtime playback, editor inspectors, no-code scene components, and a small one-line programmer API. Outside Unity, the optional Jam Audio Toolkit Companion app provides a desktop authoring workflow for previewing and exporting event data.
 
 ![Jam Audio Toolkit cover art](/assets/jam-audio-toolkit/jam-audio-toolkit-cover.png)
 
@@ -66,7 +66,7 @@ public class JamSoundEvent : ScriptableObject
 
 ![Jam Sound Event ScriptableObject inspector](/assets/jam-audio-toolkit/jam-audio-toolkit-sound-event-SO.png)
 
-The selection logic avoids immediate repeats when possible, but falls back gracefully when there are not enough valid clips.
+The selection logic avoids immediate repeats when possible.
 
 ```csharp
 private int GetClipIndex()
@@ -226,8 +226,6 @@ For designers, the package includes `JamAudioPlayer` and `JamMusicPlayer` compon
 
 ![Jam Audio Player component in Unity](/assets/jam-audio-toolkit/jam-audio-toolkit-audio-player-component.png)
 
-The component is intentionally thin. It maps Unity callbacks to the same event assets and playback rules that scripts use.
-
 ```csharp
 private void OnTriggerEnter(Collider other)
 {
@@ -242,8 +240,6 @@ public void PlaySound(JamSoundEvent soundEventToPlay)
     Play(soundEventToPlay);
 }
 ```
-
-This made the tool more useful for small teams: a designer can put a sound on a pickup, trigger volume, or scene object without needing a programmer to expose a custom event every time.
 
 ## Human-Readable Controls
 
@@ -329,7 +325,7 @@ Jam Audio Toolkit Companion is a separate C++ desktop authoring tool for quickly
 
 ![Jam Audio Toolkit Companion music event editor](/assets/jam-audio-toolkit/jam-audio-toolkit-companion-music-event.png)
 
-The exported data is intentionally simple so the Unity side can regenerate normal ScriptableObject assets rather than depending on the external tool at runtime.
+The exported data is simple so the Unity side can regenerate normal ScriptableObject assets rather than depending on the external tool at runtime.
 
 ```json
 {
@@ -367,6 +363,4 @@ bool AudioPreviewEngine::PlayPath(
 
 ## Shipping and Packaging
 
-I prepared the Unity package for free Asset Store release with offline documentation, a permissive 0BSD license for the toolkit code, a credited sample scene, and Asset Store validation cleanup. The Companion app ships separately through GitHub Releases so the Unity package remains usable without native desktop binaries.
-
-That release work ended up being part of the tools design. The package needed to behave well for beginners, pass Unity's validation expectations, and stay clear about optional pieces: the Unity package is the product, while the Companion app is a faster authoring workflow for users who want it.
+I prepared the Unity package for free Asset Store release with offline documentation, a permissive 0BSD license for the toolkit code, a credited sample scene, and Asset Store validation cleanup. The Companion app ships separately through GitHub Releases so the Unity package remains usable without native desktop binaries. Asset Store review approval is currently pending since June 2026.

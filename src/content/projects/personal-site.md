@@ -44,13 +44,3 @@ const projects = defineCollection({
   }),
 });
 ```
-
-The projects page then sorts entries by frontmatter and builds the filter list from the content itself.
-
-```ts
-const projects = (await getCollection('projects'))
-  .sort((a, b) => a.data.order - b.data.order);
-
-const projectTypes = new Set(projects.flatMap((project) => project.data.types));
-const types = ['All Projects', ...Array.from(projectTypes)];
-```

@@ -85,7 +85,7 @@ export async function scanUnityProject(
 }
 ```
 
-The report calls out practical issues: oversized audio files, unreferenced clips, unresolved GUIDs, missing `AudioSource` clips, missing mixer routing, `Play On Awake`, and suspicious volume settings. The intent is not to replace listening or project review, but to give a developer a quick map of the audio surface area before digging in manually.
+The report calls out practical issues: oversized audio files, unreferenced clips, unresolved GUIDs, missing `AudioSource` clips, missing mixer routing, `Play On Awake`, and suspicious volume settings. The intent is mainly to give a developer a quick map of the audio surface area before digging in manually.
 
 ![Audio findings grouped by severity](/assets/audio-pipeline-auditor/apa-findings-ui.png)
 
@@ -93,7 +93,7 @@ The report calls out practical issues: oversized audio files, unreferenced clips
 
 Unity audio projects often mix several styles: serialized `AudioSource` components, runtime playback code, ScriptableObject-driven audio definitions, and middleware calls. I wanted the report to describe that shape rather than only list raw files.
 
-The C# scanner looks for small evidence signals, then the pipeline detector groups those signals into higher-level profiles. For middleware, I kept the first version deliberately lightweight: detect Wwise and FMOD API calls, record where they appear, and extract the first string argument when it looks like an event name.
+The C# scanner looks for small evidence signals, then the pipeline detector groups those signals into higher-level profiles. For middleware, I kept this version deliberately simple: detect Wwise and FMOD API calls, record where they appear, and extract the first string argument when it looks like an event name.
 
 ```ts
 const middlewarePatterns = [
@@ -112,7 +112,7 @@ const middlewarePatterns = [
 ];
 ```
 
-That makes the report useful even for projects that do not use Unity's built-in audio pipeline heavily. A Wwise-heavy project still gets a summary of middleware touchpoints instead of an empty or misleading result.
+That makes the report useful even for projects that do not use Unity's built-in audio pipeline heavily.
 
 ![Detected pipeline profile cards with expandable evidence](/assets/audio-pipeline-auditor/apa-pipeline-choice-ui.png)
 

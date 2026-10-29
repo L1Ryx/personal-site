@@ -23,3 +23,7 @@ npm run preview
 ```
 
 The site deploys as static output to GitHub Pages at [shawnguo.dev](https://shawnguo.dev).
+
+## Resume Visibility
+
+Set `showResume` in `src/data/profile.ts` to `true` to show the homepage Resume button, or `false` to hide it. Rebuild and deploy for the change to take effect. The PDF remains available at its direct URL.

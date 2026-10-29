@@ -5,6 +5,7 @@ export const profile = {
 	github: 'https://github.com/l1ryx',
 	itch: 'https://l1ryx.itch.io/',
 	linkedin: 'https://www.linkedin.com/in/shawn-guo-371b66293',
+	showResume: false,
 	tagline: 'Software engineer specializing in systems, gameplay, and audio programming.',
 };
 

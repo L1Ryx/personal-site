@@ -176,10 +176,12 @@ import Layout from '../layouts/Layout.astro';
 						<img class="contact-button__icon" src="/assets/icons/linkedin.png" alt="" aria-hidden="true" />
 						LinkedIn
 					</a>
-					<a class="contact-button" href="/assets/welcome/resume.pdf" target="_blank" rel="noreferrer">
-						<img class="contact-button__icon" src="/assets/icons/resume.png" alt="" aria-hidden="true" />
-						Resume
-					</a>
+					{profile.showResume && (
+						<a class="contact-button" href="/assets/welcome/resume.pdf" target="_blank" rel="noreferrer">
+							<img class="contact-button__icon" src="/assets/icons/resume.png" alt="" aria-hidden="true" />
+							Resume
+						</a>
+					)}
 				</div>
 			</section>
 		</div>

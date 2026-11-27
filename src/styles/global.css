@@ -819,8 +819,8 @@ p {
 .home-about-copy p {
 	color: rgba(244, 243, 237, 0.88);
 	font-size: 0.94rem;
-	font-weight: 450;
-	line-height: 1.45;
+	font-weight: 300;
+	line-height: 1.65;
 	margin-bottom: 0.65rem;
 }
 
@@ -835,9 +835,9 @@ p {
 }
 
 .inline-title-link {
-	color: var(--blue-soft);
-	font-weight: 750;
-	text-decoration-color: rgba(172, 201, 244, 0.55);
+	color: var(--on-dark);
+	font-weight: 400;
+	text-decoration-color: rgba(244, 243, 237, 0.45);
 	text-underline-offset: 0.18em;
 	transition:
 		color 0.18s ease,
@@ -846,12 +846,29 @@ p {
 
 .inline-title-link:hover,
 .inline-title-link:focus-visible {
-	color: var(--on-dark);
-	text-decoration-color: var(--blue-soft);
+	color: var(--gold);
+	text-decoration-color: var(--gold);
 }
 
 .home-about-copy p:last-child {
 	margin-bottom: 0;
+}
+
+.home-experience {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) 240px;
+	gap: 2rem;
+	align-items: center;
+	margin-block: 1.25rem;
+}
+
+.home-experience p {
+	margin-bottom: 0;
+}
+
+.home-experience .home-logo-row,
+.home-experience .vesuvius-cover-link {
+	margin: 0;
 }
 
 .home-logo-row {
@@ -874,7 +891,9 @@ p {
 
 .vesuvius-cover-link {
 	display: block;
-	max-width: 240px;
+	width: 100%;
+	max-width: 220px;
+	justify-self: center;
 	margin: 0.25rem auto 0.7rem;
 	border-radius: 8px;
 	overflow: hidden;
@@ -1550,6 +1569,15 @@ p {
 
 	.project-sidebar {
 		position: static;
+	}
+
+	.home-experience {
+		grid-template-columns: 1fr;
+		gap: 1rem;
+	}
+
+	.home-experience .vesuvius-cover-link {
+		margin-inline: auto;
 	}
 }
 

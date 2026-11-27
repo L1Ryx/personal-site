@@ -1245,7 +1245,7 @@ p {
 
 .project-detail-layout {
 	display: grid;
-	grid-template-columns: minmax(190px, 0.28fr) minmax(0, 0.72fr);
+	grid-template-columns: 200px minmax(0, 1fr);
 	gap: 2rem;
 	align-items: start;
 	min-width: 0;
@@ -1414,7 +1414,19 @@ p {
 
 .markdown-body pre {
 	max-width: 100%;
+	margin-block: 1.5rem;
+	padding: 1.25rem 1.4rem;
+	border-radius: 6px;
+	font-size: 0.9rem;
+	line-height: 1.7;
+	tab-size: 4;
 	overflow-x: auto;
+}
+
+.markdown-body pre code {
+	font-family: inherit;
+	font-size: inherit;
+	line-height: inherit;
 }
 
 .markdown-body :not(pre) > code {
@@ -1432,7 +1444,8 @@ p {
 	margin-top: 0;
 }
 
-.markdown-body ul {
+.markdown-body ul,
+.markdown-body ol {
 	color: var(--muted);
 	line-height: 1.75;
 }
@@ -1566,5 +1579,9 @@ p {
 
 	.project-card-grid {
 		grid-template-columns: 1fr;
+	}
+
+	.markdown-body pre {
+		padding: 1rem;
 	}
 }

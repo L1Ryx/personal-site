@@ -805,7 +805,7 @@ p {
 }
 
 .home-readme .eyebrow {
-	color: var(--gold);
+	color: var(--blue-soft);
 	text-transform: none;
 }
 
@@ -1161,13 +1161,17 @@ p {
 .projects-hero h1 {
 	margin-bottom: 0;
 	margin-inline: auto;
-	color: var(--on-dark);
+	color: inherit;
 	font-size: clamp(1.9rem, 3.4vw, 3rem);
 }
 
 .projects-hero .eyebrow {
-	color: var(--gold);
+	color: var(--crimson-bright);
 	text-transform: none;
+}
+
+.projects-hero--games .eyebrow {
+	color: var(--gold);
 }
 
 .projects-section {
@@ -1226,13 +1230,23 @@ p {
 }
 
 .project-detail-hero .eyebrow {
-	color: var(--gold);
+	color: var(--crimson-bright);
 	text-transform: none;
 }
 
 .project-detail-hero .lede {
 	color: rgba(244, 243, 237, 0.82);
 	font-weight: 650;
+}
+
+.project-detail-hero .button {
+	background: var(--crimson);
+	color: var(--on-dark);
+}
+
+.project-detail-hero .button:hover,
+.project-detail-hero .button:focus-visible {
+	background: #98290f;
 }
 
 .project-detail-hero__grid {
